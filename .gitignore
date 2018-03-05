@@ -1,0 +1,16 @@
+###> file MacOS ###
+.DS_Store
+###< file MacOS ###
+
+###> config ###
+.env
+###< config ###
+
+###> node/webpack ###
+/node_modules/
+/public/dist/
+###< node/webpack###
+
+### delete after test  ###
+
+### delete after test  ###
