@@ -37,7 +37,6 @@ let webpackBase = {
     mode: process.env.NODE_ENV,
     entry:{
         app: ['./assets/scss/app.scss', './assets/js/app.js', hotMiddlewareScript]
-        // 'fonts/icons': ['./assets/fonts/font.js']
     },
     output: {
         path: path.resolve('./public/'),
@@ -82,7 +81,7 @@ let webpackBase = {
             root: path.resolve('./'),
             verbose: true,
             dry: false,
-            exclude: ['images','fonts']
+            exclude: ['images','fonts','resources']
           })
       ],
 }
