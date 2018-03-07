@@ -1,0 +1,10 @@
+// Section #gallery
+div#gallery.black-text.scrollspy
+    section
+        div.container
+            h2.title-section Ma galerie
+            div.row
+                each val in [0, 1, 2, 3, 4, 5]
+                    div.col.l4.s6: img.responsive-img.materialboxed(
+                        src="assets/images/landingPage/gallery/" + val + ".jpg"
+                    )

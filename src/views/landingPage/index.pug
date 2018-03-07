@@ -1,7 +1,32 @@
 extends ../base.pug
+include ../mixins/buttons.pug
 
 block body
-    h1 #{title}
-    h2 #{subtitle}
-    i.fal.fa-user-secret(style="width:100px;height:100px;")
-    span with font !
+    //- initial header -->
+    include includes/wait.pug
+
+    // Document Start
+
+    // Navbar
+    include includes/navigation.pug
+
+    // Background Image
+    include ../components/header-section.pug
+    +firstSection(
+        "landingPage@4x-80.jpg",
+        "Partager avec nous le plaisir de la voile",
+        "Nous sommes à vos cotés",
+        "Faites défiler pour découvrir plus"
+    )(class="first-section landing")
+
+    // Actu
+    include includes/actu.pug
+
+    // Asso
+    include includes/asso.pug
+
+    // Galery
+    include includes/gallery.pug
+
+    // Footer
+    include includes/footer.pug
