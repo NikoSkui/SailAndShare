@@ -1,1 +1,6 @@
-@import './custom'
+@import '~materialize-css/sass/components/_color-variables';
+@import './components/_variables';
+@import './components/_typography';
+@import '~materialize-css/sass/materialize';
+
+@import './custom';
