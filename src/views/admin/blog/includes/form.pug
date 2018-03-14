@@ -1,0 +1,57 @@
+form.col.s12(method="POST" enctype="multipart/form-data")
+    div.row
+        div.input-field.col.s7
+            input#title(type="text" data-length="70" value=(article.title != "undefined" && article.title) name="title")
+            label(for="title") Titre
+        div.col.s3
+            label Verrouillez l'accès aux membres ?
+            div.switch
+                label
+                    i.material-icons lock_open
+                    input#access(type="checkbox" name="access" value=(article.access != "undefined" && "1") checked=(article.access != "undefined" && article.access))
+                    span#leverAccess.lever
+                    i.material-icons.orange-text.accent-2 lock
+        div.col.s2
+            label En ligne ? #{article.status}
+            div.switch
+                label
+                    i.material-icons.red-text.accent-2 visibility_off
+                    input#status(type="checkbox" name="status" value=(article.status != "undefined" && "1") checked=(article.status != "undefined" && article.status))
+                    span#leverStatus.lever
+                    i.material-icons.teal-text.accent-4 visibility
+    div.row
+        div.file-field.input-field.col.s12
+            div.btn
+                span Image
+                input(type="file" name="file")
+            div.file-path-wrapper
+                input.file-path.validate(type="text" value=(article.picture != "undefined" && article.picture))
+    div.row
+        div.input-field.col.s12
+            textarea#excerpt.materialize-textarea(name="excerpt" data-length="240") #{article.excerpt}
+            label(for="excerpt") Extrait
+    div.row
+        div.input-field.col.s12
+            textarea#content.materialize-textarea(name="content") #{article.content}
+            label(for="content") Contenu
+    div.row
+        each category, i in categories
+            div.col.s3
+                    input(id=`categories-${i}` type="checkbox" name="categories" value=`${category._id}` checked=(article.categories.indexOf(category._id) != -1) && 'checked')
+                    label(for=`categories-${i}`) #{category.name}
+    div.row
+    div.row
+        div.input-field.col.s12
+        button.btn.cyan.waves-effect.waves-light.right(type="submit" name="action") Modifier
+            i.material-icons.right send
+
+script(type="text/javascript").
+    document.getElementById('leverStatus').addEventListener('click', function() {
+        let status = document.getElementById('status')
+        status.setAttribute('value', status.checked?'0':'1')
+    })
+    document.getElementById('leverAccess').addEventListener('click', function() {
+        let access = document.getElementById('access')
+        access.setAttribute('value', access.checked?'0':'1')
+    })
+

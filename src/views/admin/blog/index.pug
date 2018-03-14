@@ -1,0 +1,18 @@
+extends ../base.pug
+
+block local
+    -var currentPage = 'blog'
+
+append jsEnd
+    // page-item.js - Page Specific JS codes
+    script(type="text/javascript" src="/assets/js/adminBlog.js")
+
+
+block content
+    div.section
+        // start items list
+        div#item-posts.row
+            div.item-sizer
+                each article in articles
+                    include ./includes/post.pug
+        //- end items list

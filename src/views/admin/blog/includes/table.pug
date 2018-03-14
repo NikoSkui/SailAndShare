@@ -1,0 +1,32 @@
+
+p.caption Tables are a nice way to organize a lot of data. We provide a few utility classes to help you style your table as easily as possible. In addition, to improve mobile experience, all tables on mobile-screen widths are centered automatically.
+div.divider
+// responsive table
+div#responsive-table
+    h4.header Responsive Table
+    div.row
+        div.col.s12
+            p Add class="responsive-table" to the table tag to make the table horizontally scrollable on smaller screen widths.
+        div.col.s12
+            // Posts
+            table.highlight.responsive-table
+                thead
+                    tr
+                        th En ligne
+                        th Titre
+                        th Actions
+                tbody
+                    each article in articles
+                        tr
+                            td
+                            div.switch
+                                label
+                                    input(type="checkbox")
+                                    span.lever
+                            td #{article.title}
+                            td(style="display:flex;align-items:stretch;")
+                                a(href=`blog/${article._id}`): i.material-icons pageview
+                                a(href=`blog/${article._id}`): i.material-icons mode_edit
+                                form( id=`${article._id}` method="POST" action=`/admin/blog/${article._id}`)
+                                    input(type="hidden" name="_method" value="delete")
+                                    button.btn-flat(form=`${article._id}` style="padding:0;height:1rem;line-height:1rem;"): i.material-icons.red-text.lighten-1(style="font-size:24px;") delete

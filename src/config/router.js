@@ -20,10 +20,23 @@ module.exports = (app) => {
      */
     fs.readdir(path.join(path.dirname(__dirname),modulesDir), (err,modules) => {
         modules.forEach(moduleDir => {
-            let routes = require(`../${modulesDir}/${moduleDir}/routes`);
+
+            // Defined root path
+            let frontRouteFileDir = path.join(path.dirname(__dirname),`/${modulesDir}/${moduleDir}/routes`),
+                adminRouteFileDir = path.join(path.dirname(__dirname),`/${modulesDir}/${moduleDir}/adminRoutes`)
+
+            // Create little routerApp for each folders with route.js
+            let routes = require(frontRouteFileDir)
             Object.keys(routes).forEach(route => {
                 app.use(`/${route.replace('_','-')}`, routes[route])
             })
+            // Check if adminRoute.js exist and create little routerApp for each folders with adminRoute.js
+            if (fs.existsSync(adminRouteFileDir + '.js')) {
+                let adminRoutes = require(adminRouteFileDir)
+                Object.keys(routes).forEach(route => {
+                    app.use(`/admin/${route.replace('_','-')}`, adminRoutes[route])
+                })
+            }
         });
     })
 
@@ -34,7 +47,7 @@ module.exports = (app) => {
         debug(`
             Your .env file should have a MAIN variable like this:
             MAIN=home/index
-            ...this maps the application's index route ('http://localhost:3009')
+            ...this maps the application's index route ('http://localhost:3000')
             to home module's routes.js' index method.
 
         `);

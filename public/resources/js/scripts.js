@@ -82,14 +82,16 @@ $(document).ready(function () {
                 }
             }
         }
-        //Change Menu Active item
-        $('#nav-mobile a').each(function () {
+        //For animate container
+        $('#nav-desktop a').each(function () {
             var currLink = $(this);
-            var refElement = $(currLink.attr("href"));
-            if (refElement.length > 0) {
-                if (refElement.offset().top <= (scrollPos + 300) && refElement.offset().top + refElement.height() > (scrollPos + 300)) {
-                    if (currLink.attr("href") != '#asso')
-                        refElement.addClass("visible");
+            if (currLink.attr("href").startsWith('#')) {
+                var refElement = $(currLink.attr("href"));
+                if (refElement.length > 0) {
+                    if (refElement.offset().top <= (scrollPos + 300) && refElement.offset().top + refElement.height() > (scrollPos + 300)) {
+                        if (currLink.attr("href") != '#asso')
+                            refElement.addClass("visible");
+                    }
                 }
             }
         });
@@ -114,7 +116,7 @@ $(document).ready(function () {
     }
     init();
 
-    $(".button-collapse").sideNav();
+    // $(".button-collapse").sidenav();
     $('.actuSlider').makeSlider();
     $('.associationSlider').makeSlider();
     $('.equipeSlider').makeSlider();
@@ -130,6 +132,6 @@ $(document).ready(function () {
         setTimeout(function () {
             $(".ip-header").hide();
         }, 400);
-
     })
+
 });

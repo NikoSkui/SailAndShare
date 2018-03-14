@@ -1,10 +1,12 @@
 /**
  * Load module required
  */
-const debug       = require('debug')('app'), // so that the app can use reporting debug
-      path        = require('path'),
-      morgan      = require('morgan'),
-      serveStatic = require('serve-static')
+const debug          = require('debug')('app'), // so that the app can use reporting debug
+      path           = require('path'),
+      morgan         = require('morgan'),
+      serveStatic    = require('serve-static'),
+      bodyParser     = require('body-parser'),
+      methodOverride = require('method-override');
 
 module.exports = (app) => {
 
@@ -39,10 +41,31 @@ module.exports = (app) => {
      */
     app.use(morgan('dev'))
 
+
+    /**
+     * Use 'body-parser' middleware to parse data coming from forms and other
+     * types of requests (programmatically-made requests, later on this one).
+     */
+     app.use(bodyParser.json());
+     app.use(bodyParser.urlencoded({ extended: true }));
+
     /**
      * Use the 'serve-static' middleware to catch requests for asset files and serve
      */
     app.use('/assets', serveStatic(path.join(path.dirname(path.dirname(__dirname)), '/public')));
+
+    /**
+     * Here we use methodOverride middleware to allow X-HTTP requests, as well as
+     * PUT and DELETE methods passed in as query string
+     */
+    app.use(methodOverride(function (req, res) {
+        if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+          // look in urlencoded POST bodies and delete it
+          var method = req.body._method
+          delete req.body._method
+          return method
+        }
+      }))
 
     if (process.env.NODE_ENV === 'development') {
 

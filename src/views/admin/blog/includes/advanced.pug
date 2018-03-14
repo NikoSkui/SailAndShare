@@ -1,0 +1,45 @@
+                        form.col.s12
+                            div.row
+                                div.input-field.col.s6
+                                    input#first_name(type="text")
+                                    label(for="first_name") First Name
+                                div.input-field.col.s6
+                                    input#last_name(type="text")
+                                    label(for="last_name") Last Name
+                            div.row
+                                div.input-field.col.s12
+                                    input#email5(type="email")
+                                    label(for="email") Email
+                            div.row
+                                div.input-field.col.s12
+                                    input#password6(type="password")
+                                    label(for="password") Password
+                            div.row
+                                div.input-field.col.s6
+                                    select
+                                        option(value="" disabled selected) Choose your profile
+                                        option(value="1") Manager
+                                        option(value="2") Developer
+                                        option(value="3") Business
+                                    label Select Profile
+                                div.input-field.col.s6
+                                    input.datepicker(type="date")
+                                    label(for="dob") DOB
+                            div.row
+                            div.file-field.input-field.col.s6
+                                input.file-path.validate(type="text")
+                                div.btn
+                                    span Image
+                                    input(type="file")
+                            div.input-field.col.s6
+                                span Age
+                                p.range-field
+                                    input(type="range" id="test5" min="0" max="100")
+                            div.row
+                            div.input-field.col.s12
+                                textarea#message5.materialize-textarea(length="120")
+                                label(for="message") Message
+                            div.row
+                                div.input-field.col.s12
+                                button.btn.cyan.waves-effect.waves-light.right(type="submit" name="action") Submit
+                                    i.material-icons.right send

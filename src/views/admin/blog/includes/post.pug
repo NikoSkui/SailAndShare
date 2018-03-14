@@ -1,0 +1,31 @@
+div.item.product
+    div.card
+        div.card-image.waves-effect.waves-block.waves-light
+            a.btn-price(href="#")
+                if article.status
+                    i.material-icons.teal-text.accent-4 visibility
+                else
+                    i.material-icons.red-text.accent-2 visibility_off
+                if article.access
+                    i.material-icons.orange-text.accent-2 lock
+            a(href="#"): img(src=`/assets/images/blog/thumb/${article.picture}` alt="item-img")
+        ul.card-action-buttons
+            li: a.btn-floating.waves-effect.waves-light.cyan
+                i.material-icons.activator pageview
+            li: a.btn-floating.waves-effect.waves-light.deep-orange.accent-2(href=`blog/${article._id}`)
+                i.material-icons mode_edit
+            li
+                form( id=`${article._id}` method="POST" action=`/admin/blog/${article._id}`)
+                    input(type="hidden" name="_method" value="delete")
+                    button.btn-floating.waves-effect.waves-light.red.accent-2(form=`${article._id}`)
+                        i.material-icons delete
+        div.card-content
+            div.row
+                div.col.s12
+                    p.card-title.grey-text.text-darken-4
+                        a.grey-text.text-darken-4(href="#") #{article.title}
+        div.card-reveal
+            span.card-title.grey-text.text-darken-4
+                i.material-icons.right close
+                | #{article.title} #{article.access}
+            p #{article.excerpt}
