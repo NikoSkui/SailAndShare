@@ -1,7 +1,15 @@
-ul#dropdownSkills.dropdown-content(style="top: 64px;")
+ul#dropdownAsso.dropdown-content(style="top: 64px;")
     li: a(href="#equipe" onclick="$('.equipeSlider').moveToSlide(1)") Equipe
     li: a(href="#stages" onclick="$('.stagesSlider').moveToSlide(1)") Stages
     li: a(href="#valeurs" onclick="$('.valeursSlider').moveToSlide(1)") Valeurs
+
+ul#nav-mobile.sidenav
+    li: a(href="#actu") l'actu
+    li: a.dropdown-button(data-target="dropdownAsso" href="#asso") L'association
+    li: a(href="#gallery") Galerie
+    li: a(href="#footer") Nous rejoindre
+    li: a(href="/blog") Blog
+    li: a(href="/admin"): i.fa.fa-login
 
 div.bg-header
 
@@ -15,13 +23,13 @@ div.navbar-fixed
                  b and
                  | Share
                 a(class="brand-logo icon-logo" href="/"): img(src="assets/images/logo.png")
-                ul.right.side-nav
-                    li: a(href="/blog") Blog
-                ul#nav-mobile.right.side-nav
+                ul#nav-desktop.right.hide-on-med-and-down
                     li: a(href="#actu") l'actu
-                    li: a.dropdown-button(data-target="dropdownSkills" href="#asso") L'association
+                    li: a.dropdown-button(data-target="dropdownAsso" href="#asso") L'association
                     li: a(href="#gallery") Galerie
                     li: a(href="#footer") Nous rejoindre
+                    li: a(href="/blog") Blog
+                    li: a(href="/admin"): i.fa.fa-sign-in
                 //- Include this line below
-                a(class="button-collapse" href="#" data-activates="nav-mobile"): i.mdi-navigation-menu
+                a(class="sidenav-trigger" href="#" data-target="nav-mobile"): i.fa.fa-bars
                 //- End

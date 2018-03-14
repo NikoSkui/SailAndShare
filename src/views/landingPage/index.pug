@@ -1,14 +1,26 @@
 extends ../base.pug
 include ../mixins/buttons.pug
 
+block css
+    link(rel="stylesheet" href="assets/resources/css/wait.css")
+    link(rel="stylesheet" href="assets/css/app.css")
+
+block jsStart
+    script(src="assets/resources/js/_bower.js")
+    script(src="assets/resources/js/_functions.js")
+    script(src="assets/resources/js/scripts.js")
+
+block jsEnd
+    script(src='assets/js/app.js')
+
 block body
     //- initial header -->
-    include includes/wait.pug
+    include ../components/wait.pug
 
     // Document Start
 
     // Navbar
-    include includes/navigation.pug
+    include ../components/navigation.pug
 
     // Background Image
     include ../components/header-section.pug
@@ -29,4 +41,4 @@ block body
     include includes/gallery.pug
 
     // Footer
-    include includes/footer.pug
+    include ../components/footer.pug

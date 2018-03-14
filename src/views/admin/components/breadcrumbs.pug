@@ -1,0 +1,17 @@
+div#breadcrumbs-wrapper
+    // Search for small screen
+    div.header-search-wrapper.grey.lighten-2.hide-on-large-only
+        input.header-search-input.z-depth-2(type="text" name="Search" placeholder="Explore Materialize")
+    div.container
+        div.row
+            div.col.s10.m6.l6
+                h5.breadcrumbs-title Gestion du blog
+                ol.breadcrumbs
+                    li: a(href="index.html") Dashboard
+                    li: a(href="#") Blog
+                    li.active Articles
+            div.col.s2.m6.l6
+                form#addArticle(method="POST" action="/admin/blog")
+                    button.btn.dropdown-settings.waves-effect.waves-light.breadcrumbs-btn.right.gradient-45deg-light-blue-cyan.gradient-shadow(form="addArticle")
+                        i.material-icons.hide-on-med-and-up settings
+                        span.hide-on-small-onl Ajouter un article
