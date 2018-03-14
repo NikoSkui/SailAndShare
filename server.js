@@ -25,7 +25,7 @@ require('./src/config/database')()
 require('./src/config/router')(app)
 
 /**
- * Step 1
+ * Step 5
  * Tells the server to listen to a certain port for any requests
  */
 server.listen(app.get('port'), () => {

@@ -1,11 +1,13 @@
 'use strict';
 
+
 import 'materialize-css/dist/js/materialize.min';
 import './easingUi';
 import './galleryExpand';
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  $('.sidenav').sidenav();
   // variables
   let nav = document.querySelector('nav.head-nav')
   let elem
@@ -13,12 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
   let i = 0
 
   // dropdown menu
-    elem = document.querySelector('.dropdown-button');
-    var dropdown = M.Dropdown.init(elem, {
+  elems = document.querySelectorAll('.dropdown-button');
+  let dropdown = []
+  i = 0
+  for( i=0; i < elems.length; i++ ) {
+    dropdown = M.Dropdown.init(elems[i],{
       hover:true,
       constrainWidth:true,
       coverTrigger:false
-    });
+    })
+  }
 
   // parallax
   elems = document.querySelectorAll('.parallax');
@@ -55,21 +61,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 })
 
-$(document).ready(function () {
-  // function to blog animation  onShhow
-  var onShow = (el) => {
-    // let navbar = document.getElementsByClassName('navbar-fixeds');
-    let carousel = el.find('.carousel');
-    carousel.carousel({
-      dist: 0,
-      padding: 10
-    });
-  }
-  // blog animation
-  $('.gallery-expand').galleryExpand({
-      onShow: onShow,
-      fillScreen: true,
-      inDuration: 500,
-      dynamicRouting: false
-  });
-})
+// $(document).ready(function () {
+//   // function to blog animation  onShhow
+//   var onShow = (el) => {
+//     // let navbar = document.getElementsByClassName('navbar-fixeds');
+//     let carousel = el.find('.carousel');
+//     carousel.carousel({
+//       dist: 0,
+//       padding: 10
+//     });
+//   }
+//   // blog animation
+//   $('.gallery-expand').galleryExpand({
+//       onShow: onShow,
+//       fillScreen: true,
+//       inDuration: 500,
+//       dynamicRouting: false
+//   });
+// })

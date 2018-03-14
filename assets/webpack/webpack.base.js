@@ -36,7 +36,10 @@ let webpackBase = {
     watch: debug,
     mode: process.env.NODE_ENV,
     entry:{
-        app: ['./assets/scss/app.scss', './assets/js/app.js', hotMiddlewareScript]
+        app:       ['./assets/scss/app.scss', './assets/js/landing.js', hotMiddlewareScript],
+        blog:      ['./assets/scss/appBlog.scss', './assets/js/blog.js', hotMiddlewareScript],
+        adminBlog: ['./assets/scss/appAdmin.scss', './assets/js/adminBlog.js', hotMiddlewareScript]
+        // wait: ['./assets/scss/resources/wait.scss'] // pour compiler et minifier le css wait
     },
     output: {
         path: path.resolve('./public/'),
@@ -66,6 +69,18 @@ let webpackBase = {
                   use: [...cssLoaders, 'sass-loader']
                 })
             }
+            // test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf|wav)(\?.*)?$/,
+            // {
+            //     test: /\.(png|jpg|gif)$/,
+            //     use: [
+            //         {
+            //             loader: 'url-loader',
+            //             options: {
+            //                 limit: 8192
+            //             }
+            //         }
+            //     ]
+            // }
         ]
     },
     plugins: [
