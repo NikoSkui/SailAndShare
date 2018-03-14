@@ -1,0 +1,35 @@
+ /* Docked Nav */
+ .has-docked-nav nav {
+    background-color: #424242 !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .has-docked-nav .backgroundImage {
+    opacity: 1;
+    -webkit-transition: all ease-out 0.2s;
+            transition: all ease-out 0.2s;
+  }
+
+  .tabs-wrapper {
+    position: relative;
+    height: 48px;
+  }
+
+  nav.white .backgroundImage {
+    background-color: #424242;
+  }
+
+  nav.white {
+    box-shadow: none;
+  }
+
+  .tabs-wrapper .row {
+    z-index: 600;
+  }
+
+  .tabs-wrapper .pinned {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
+  .about-tabs.tabs-wrapper.hide-on-med-and-down.pinned {
+    z-index: 500!important;
+  }
