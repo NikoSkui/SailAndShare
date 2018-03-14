@@ -1,0 +1,47 @@
+extends ../base.pug
+
+block css
+    link(rel="stylesheet" href="/assets/css/blog.css")
+
+block jsStart
+    script(src="/assets/resources/js/_bower.js")
+    //- script(src="assets/resources/js/_functions.js")
+    //- script(src="assets/resources/js/scripts.js")
+block jsEnd
+    script(src="/assets/resources/js/color-thief.js")
+    script(src="/assets/js/blog.js")
+
+block body
+
+    //- initial header -->
+    //- include ../components/wait.pug
+
+    // Document Start
+
+    // Navbar and Header
+    include ../components/navigationBlog.pug
+
+    // Section #blog
+    div#blog.section.white.black-text
+        div.container
+            div.gallery.row
+
+                // Intro
+                div.col.l4.m6.s12.gallery-item.gallery-filter.all
+                    div.card.blue-grey.darken-1
+                        div.card-content.white-text
+                            span.card-title A propos
+                            p Dans cet espace, vous vivrez avec nous comme si vous y étiez tous nos stages.
+                            p(style="margin-top:10px;") Pour les adhérent de l'association, vous pouvez également consulter toutes nos fiches techniques.
+                        div.card-action
+                            a(href="#footer") Rejoindre l'asso ?
+
+                // Posts
+                each article in articles
+                    include ./includes/post.pug
+
+        //end container
+
+    // Footer
+    include ./includes/show.pug
+    include ../components/footer.pug

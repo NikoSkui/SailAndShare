@@ -34,7 +34,8 @@
           var overlayActive = false;
           var doneAnimating = true;
           var origin = $(this);
-          var objectId = origin.attr('id') || i.toString();
+          var objectId = $(this).attr('data-dynamic-slug') || origin.attr('id') || i.toString();
+          var $picture = origin.find('img');
           var $object = origin.find('.gallery-cover');
           var $header = origin.find('.gallery-header');
           var $curveWrapper = origin.find('.gallery-curve-wrapper');
@@ -127,10 +128,11 @@
               return;
             }
 
+
             // If is child of ancestor that has attr data-stop-propagation, do nothing
             var target = $(e.target);
             if (target.attr('data-stop-propagation') ||
-                target.closest('[data-stop-propagation="true"]').length) {
+            target.closest('[data-stop-propagation="true"]').length) {
               return;
             }
 
@@ -144,7 +146,30 @@
 
             // Set URL param
             if (dynamicRouting) {
-              window.location.hash = objectId;
+
+              window.location.hash = '!' + objectId;
+
+              let url = window.location.href.replace(window.location.hash,'/'+ dynamicRouting)
+
+              // Call to AJAX
+              $.get(url)
+                .done((datas) => {
+                  // Grab html from template
+                  var template = $('script[data-template="showTpl"]').html()
+                  // Injects the data into the template and adds it to the page
+                  $body.append(render(template, datas))
+                  $picture.attr("src", $picture.attr("src").replace('/thumb/','/big/'))
+
+
+                });
+                // Very basic templating
+                function render(template, datas) {
+                  var patt = /\$\{([^}]+)\}/g; // matches ${key}
+                  return template.replace(patt, (_, key) => {
+                    return datas[key];
+                  });
+                }
+
             }
 
             // Card vars
@@ -601,6 +626,8 @@
             if (dynamicRouting) {
               window.location.hash = '!';
             }
+            // Switch full image to thumbnail image
+            $picture.attr("src", $picture.attr("src").replace('/big/','/thumb/'))
 
             // Cancel timeout.
             var cancelledTimeout = !doneAnimating;
@@ -731,6 +758,8 @@
 
                 // Remove active class
                 origin.removeClass('active');
+                // Remove template detail
+                $body.children().remove()
 
                 // Enable origin to be clickable once return animation finishes.
                 originClickable = true;
