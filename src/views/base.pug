@@ -1,25 +1,22 @@
 doctype html
 html
     head
-        //- Basic Page Needs
+        // Basic Page Needs
         meta(charset="utf-8")
         title Sail and Share
         meta(name="description" content="Association pour le partage de la voile")
         meta(name="author" content="studioNS")
-        //- Mobile Specific Metas
+        // Mobile Specific Metas
         meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no")
-        //- FONT
+        // FONT
         link(href='http://fonts.googleapis.com/css?family=Lato:400italic,100,300,700,800,400' rel='stylesheet'
         type='text/css')
-        //- ICONS
-        script(src='assets/fonts/icons.js')
-        //- CSS
-        link(rel="stylesheet" href="assets/css/app.css")
-        link(rel="stylesheet" href="assets/resources/css/style.css")
-        //- JS
-        script(src="assets/resources/js/_bower.js")
-        script(src="assets/resources/js/_functions.js")
-        script(src="assets/resources/js/scripts.js")
+        // ICONS
+        script(src='/assets/fonts/icons.js')
+        // CSS
+        block css
+        // JS
+        block jsStart
     body
         block body
-        script(src='assets/js/app.js')
+        block jsEnd
