@@ -1,3 +1,4 @@
+'use strict';
 
 require('materialize-css/dist/js/materialize.min')
 require('./easingUi')
@@ -9,6 +10,25 @@ const ImagesLoaded  = require('imagesloaded'),
 
 jQueryBridget( 'masonry', Masonry, $ )
 jQueryBridget( 'imagesLoaded', ImagesLoaded, $ )
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // variables
+  let elems
+  let i = 0
+
+  // dropdown menu
+  elems = document.querySelectorAll('.dropdown-button');
+  let dropdown = []
+  i = 0
+  for( i=0; i < elems.length; i++ ) {
+    dropdown = M.Dropdown.init(elems[i],{
+      hover:true,
+      constrainWidth:true,
+      coverTrigger:false
+    })
+  }
+})
 
 $(function(){
     // Navbar
