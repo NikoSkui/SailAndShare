@@ -21,7 +21,11 @@ module.exports = {
     // Read all articles
     index: (req,res) => {
         // Find all Articles
-        Articles.find({}).select('title excerpt picture access status').exec((err, articles) => {
+        Articles
+          .find({})
+          .select('title excerpt picture access status')
+          .sort('-_id')
+          .exec((err, articles) => {
             if (err && dev) res.status(500).send(err).end()
             if (err && !dev) throw err
             res.render('admin/blog/index', {articles:articles})
@@ -48,8 +52,7 @@ module.exports = {
     create: (req,res) => {
         new Articles({}).save()
         .then(article => {
-            console.log(article)
-            res.redirect('/admin/blog/' + article._id)
+            res.redirect('/admin/blog/articles/' + article._id)
         })
         .catch(err => {
             res.status(500).send(err).end()
@@ -61,9 +64,6 @@ module.exports = {
         // Find all Articles
         Articles.findById(req.params.id).exec()
         .then(article => {
-
-            console.log(req.body.status)
-
             article.title      = req.body.title
             article.excerpt    = req.body.excerpt
             article.content    = req.body.content
@@ -71,7 +71,7 @@ module.exports = {
             article.status     = req.body.status
             article.categories = req.body.categories
             if (req.file) {
-                imgProc.convertImg(req.file)
+                imgProc.convertImgBlog(req.file)
                 if(article.picture) {
                     fs.unlinkSync(path.resolve('./public/images/blog/thumb/' + article.picture))
                     fs.unlinkSync(path.resolve('./public/images/blog/big/' + article.picture))
@@ -82,7 +82,7 @@ module.exports = {
             return article.save()
         })
         .then(article => {
-            res.redirect('/admin/blog')
+            res.redirect('/admin/blog/articles')
         })
         .catch(err => {
             res.status(500).send(err).end()
@@ -97,7 +97,7 @@ module.exports = {
                 fs.unlinkSync(path.resolve('./public/images/blog/thumb/' + article.picture))
                 fs.unlinkSync(path.resolve('./public/images/blog/big/' + article.picture))
             }
-            res.redirect('/admin/blog')
+            res.redirect('/admin/blog/articles')
         })
         .catch(err => {
             res.status(500).send(err).end()

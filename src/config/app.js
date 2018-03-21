@@ -6,7 +6,11 @@ const debug          = require('debug')('app'), // so that the app can use repor
       morgan         = require('morgan'),
       serveStatic    = require('serve-static'),
       bodyParser     = require('body-parser'),
-      methodOverride = require('method-override');
+      methodOverride = require('method-override'),
+      session        = require('express-session'),
+      flash          = require('connect-flash'),
+      passport       = require('passport'),
+      mailer         = require('express-mailer')
 
 module.exports = (app) => {
 
@@ -41,6 +45,43 @@ module.exports = (app) => {
      */
     app.use(morgan('dev'))
 
+    /**
+     * Use 'passport' middleware for Authentification
+     */
+    // Express Session
+    app.use(session({
+        secret:'localAuth',
+        saveUninitialized: true,
+        resave: true
+    }))
+    // Passport init
+    app.use(passport.initialize())
+    app.use(passport.session()) // persistent login sessions
+    // Connect Flash
+    app.use(flash())
+    // Global Vars
+    app.use((req, res, next) => {
+        res.locals.success_msg = req.flash('success_msg');
+        res.locals.error_msg = req.flash('error_msg');
+        res.locals.error = req.flash('error');
+        res.locals.user = req.user || null;
+        next();
+    });
+
+    /**
+     * Use 'express-mailer' middleware to send mail
+     */
+    mailer.extend(app, {
+        from: 'no-reply@example.com',
+        host: 'smtp.gmail.com', // hostname
+        secureConnection: true, // use SSL
+        port: 465, // port for secure SMTP
+        transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+        auth: {
+          user: '3desquisse@gmail.com',
+          pass: 'NikoSkui5473'
+        }
+      });
 
     /**
      * Use 'body-parser' middleware to parse data coming from forms and other

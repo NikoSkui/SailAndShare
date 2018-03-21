@@ -1,12 +1,15 @@
 /**
  * Load modules required
  */
-const mongoose = require('mongoose')
+const mongoose = require('mongoose'),
+      slug     = require('mongoose-slug-generator')
+
+mongoose.plugin(slug)
 
 // Article Schema
 let articleSchema = new mongoose.Schema({
     title:   String,
-    slug:    String,
+    slug: { type: String, slug: "title" },
     excerpt: String,
     content: String,
     status:  Boolean,

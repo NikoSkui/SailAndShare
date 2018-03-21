@@ -4,6 +4,7 @@
 const router     = require('express').Router(), // Create new instance Router
       controller = require('./controllers/adminController'), // load associated Controller
       debug      = require('debug')('router') // so that the app can use reporting debug
+      passport   = require('../../config/passport')
 
 /**
  * Admin - public routes
@@ -11,7 +12,7 @@ const router     = require('express').Router(), // Create new instance Router
  */
 debug('Defined the Admin route')
 // Read - Get méthods.
-router.get('/', controller.index)
+router.get('/', passport.ensureAuthenticatedAdmin, controller.index)
 
 /**
  * Exports all routes and name them

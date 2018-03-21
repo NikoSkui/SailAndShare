@@ -3,7 +3,8 @@
  */
 const debug = require('debug')('router'), // so that the app can use reporting debug
       fs    = require('fs'), // for accessing the filesystem of the host
-      path = require('path') // for manipulating directory strings
+      path = require('path'), // for manipulating directory strings
+      passport   = require('./passport')
 
 module.exports = (app) => {
 
@@ -25,16 +26,18 @@ module.exports = (app) => {
             let frontRouteFileDir = path.join(path.dirname(__dirname),`/${modulesDir}/${moduleDir}/routes`),
                 adminRouteFileDir = path.join(path.dirname(__dirname),`/${modulesDir}/${moduleDir}/adminRoutes`)
 
-            // Create little routerApp for each folders with route.js
-            let routes = require(frontRouteFileDir)
-            Object.keys(routes).forEach(route => {
-                app.use(`/${route.replace('_','-')}`, routes[route])
-            })
+            // Check if adminRoute.js exist and create little routerApp for each folders with route.js
+            if (fs.existsSync(frontRouteFileDir + '.js')) {
+                let routes = require(frontRouteFileDir)
+                Object.keys(routes).forEach(route => {
+                    app.use(`/${route.replace('_','-')}`, routes[route])
+                })
+            }
             // Check if adminRoute.js exist and create little routerApp for each folders with adminRoute.js
             if (fs.existsSync(adminRouteFileDir + '.js')) {
                 let adminRoutes = require(adminRouteFileDir)
-                Object.keys(routes).forEach(route => {
-                    app.use(`/admin/${route.replace('_','-')}`, adminRoutes[route])
+                Object.keys(adminRoutes).forEach(route => {
+                    app.use(`/admin/${route.replace('_','-')}`, passport.ensureAuthenticatedAdmin, adminRoutes[route])
                 })
             }
         });

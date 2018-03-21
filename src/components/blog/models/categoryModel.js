@@ -1,14 +1,15 @@
 /**
  * Load modules required
  */
-const mongoose = require('mongoose')
+const mongoose = require('mongoose'),
+      slug     = require('mongoose-slug-generator')
+
+mongoose.plugin(slug)
 
 // Category Schema
 let categorySchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
+    name: String,
+    slug: { type: String, slug: "name" }
 })
 
 categorySchema .virtual('articles', {
