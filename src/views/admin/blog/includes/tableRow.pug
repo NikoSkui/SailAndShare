@@ -1,0 +1,8 @@
+script(type="text/template" data-template="tableCatTpl")
+    tr
+        td(id="${_id}") ${name}
+        td(style="display:flex;align-items:stretch;")
+            a.btn-update(href="#" data-id="${_id}" data-name="${name}" data-href="/admin/blog/categories/${_id}" data-slug="${slug}"): i.material-icons mode_edit
+            form( id="delete-${_id}" method="POST" action="/admin/blog/categories/${_id}")
+                input(type="hidden" name="_method" value="delete")
+                button.btn-flat.btn-delete(form="delete-${_id}" style="padding:0;height:1rem;line-height:1rem;"): i.material-icons.red-text.lighten-1(style="font-size:24px;") delete

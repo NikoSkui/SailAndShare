@@ -1,7 +1,5 @@
 
-div.col.l4.m6.s12.gallery-item.gallery-expand.gallery-filter.sheet(
-    data-dynamic-routing=`${article._id}` data-dynamic-slug=`${article.slug}`
-    )
+div.col.l4.m6.s12.gallery-item.gallery-expand.gallery-filter(class=article.categoriesClass data-dynamic-routing=`${article._id}` data-dynamic-slug=`${article.slug}`)&attributes(article.categories.slug)
     div.gallery-curve-wrapper
         a.gallery-cover.gray
             img.responsive-img(src=`/assets/images/blog/thumb/${article.picture}` alt=`${article.slug}`)

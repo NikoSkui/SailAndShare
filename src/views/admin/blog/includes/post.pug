@@ -1,21 +1,21 @@
 div.item.product
     div.card
         div.card-image.waves-effect.waves-block.waves-light
-            a.btn-price(href="#")
+            a.btn.btn-price.blue-grey.darken-3.p-0(href="#" style="display:flex;align-items:center;height:20px;width:auto;justify-content:space-around;")
                 if article.status
-                    i.material-icons.teal-text.accent-4 visibility
+                    i.material-icons.teal-text.accent-4.small(style="padding:.2rem;") visibility
                 else
-                    i.material-icons.red-text.accent-2 visibility_off
+                    i.material-icons.red-text.accent-2.small(style="padding:.2rem;") visibility_off
                 if article.access
-                    i.material-icons.orange-text.accent-2 lock
-            a(href="#"): img(src=`/assets/images/blog/thumb/${article.picture}` alt="item-img")
+                    i.material-icons.orange-text.accent-2.small(style="padding:.2rem;") lock
+            a(href="#"): img(src=`/assets/images/blog/thumb/${article.picture}` alt="item-img" height="250")
         ul.card-action-buttons
             li: a.btn-floating.waves-effect.waves-light.cyan
                 i.material-icons.activator pageview
-            li: a.btn-floating.waves-effect.waves-light.deep-orange.accent-2(href=`blog/${article._id}`)
+            li: a.btn-floating.waves-effect.waves-light.deep-orange.accent-2(href=`/admin/blog/articles/${article._id}`)
                 i.material-icons mode_edit
             li
-                form( id=`${article._id}` method="POST" action=`/admin/blog/${article._id}`)
+                form( id=`${article._id}` method="POST" action=`/admin/blog/articles/${article._id}`)
                     input(type="hidden" name="_method" value="delete")
                     button.btn-floating.waves-effect.waves-light.red.accent-2(form=`${article._id}`)
                         i.material-icons delete
@@ -23,7 +23,7 @@ div.item.product
             div.row
                 div.col.s12
                     p.card-title.grey-text.text-darken-4
-                        a.grey-text.text-darken-4(href="#") #{article.title}
+                        a.grey-text.text-darken-4.truncate(href="#") #{article.title}
         div.card-reveal
             span.card-title.grey-text.text-darken-4
                 i.material-icons.right close

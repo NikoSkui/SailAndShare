@@ -1,11 +1,22 @@
 extends ../base.pug
 
+include ../mixins/breadcrumbs.pug
+
 block local
-    -var currentPage = 'blog'
+    -var currentPage = 'articles'
+    -var collapsible = 'active'
 
 append jsEnd
     // page-item.js - Page Specific JS codes
     script(type="text/javascript" src="/assets/js/adminBlog.js")
+
+block breadcrumbs
+    +breadcrumb(
+        'Gestion du blog',
+        {'title':'Ajouter un article','action':'/admin/blog/articles'},
+        {'title':'Blog','href':'articles'},
+        {'title':'Article'}
+    )
 
 
 block content

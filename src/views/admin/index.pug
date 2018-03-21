@@ -1,12 +1,13 @@
 extends ./base.pug
 
 block content
-    -var posts = [{"icon":"add_shopping_cart","color":"gradient-45deg-light-blue-cyan","title":"Orders","subtitle":"New","number":"690","subnumber":"6,00,00"},{"icon":"perm_identity","color":"gradient-45deg-red-pink","title":"Clients","subtitle":"New","number":"1885","subnumber":"1,12,900"},{"icon":"timeline","color":"gradient-45deg-amber-amber","title":"Sales","subtitle":"Growth","number":"80%","subnumber":"3,42,230"},{"icon":"attach_money","color":"gradient-45deg-green-teal","title":"Profit","subtitle":"Today","number":"$890","subnumber":"$25,000"}]
+    -var posts = [{"icon":"dvr","color":"gradient-45deg-light-blue-cyan","title":"Blog","subtitle":"Articles","number":"4"},{"icon":"perm_identity","color":"gradient-45deg-red-pink","title":"Membre","subtitle":"Actif","number":"2"}]
+    //- [{"icon":"timeline","color":"gradient-45deg-amber-amber","title":"Sales","subtitle":"Growth","number":"80%","subnumber":"3,42,230"},{"icon":"attach_money","color":"gradient-45deg-green-teal","title":"Profit","subtitle":"Today","number":"$890","subnumber":"$25,000"}]
 
     div#card-stats
         div.row
             each post in posts
-                div.col.s12.m6.l3
+                div.col.s12.m6.l6
                     div(class=`card gradient-shadow min-height-100 white-text ${post.color}`)
                         div.padding-4
                             div.col.s7.m7

@@ -2,7 +2,9 @@ doctype html
 html
 
     block local
-        -var currentPage= 'dashboard'; //default
+        -var currentPage = 'dashboard' //default
+        -var collapsible = ''
+        -var bodyClass = ''
 
     head
         // Basic Page Needs
@@ -27,9 +29,9 @@ html
             // INCLUDED PLUGIN CSS ON THIS PAGE
             link(href="/assets/resources/prism/prism.css" type="text/css" rel="stylesheet")
             link(href="/assets/resources/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet")
-            link(href="/assets/resources/flag-icon/css/flag-icon.min.css" type="text/css" rel="stylesheet")
+            //- link(href="/assets/resources/flag-icon/css/flag-icon.min.css" type="text/css" rel="stylesheet")
         block jsStart
-    body
+    body(class=bodyClass)
         block body
             // Start Page Loading
             include ./components/wait.pug
@@ -43,9 +45,8 @@ html
                     include ./components/sidenav.pug
                     // Content
                     section.content
-                        // Breadcrumbs
-                        unless currentPage == 'dashboard'
-                            include ./components/breadcrumbs.pug
+                        // Breadcrumb
+                        block breadcrumbs
                         div.container
                             block content
             // Footer

@@ -36,10 +36,10 @@ div#asso.black-text.scrollspy
                                         each item, i in post.items
                                             div.row
                                                 div.col.s12
-                                                    a.weight-800.grey-text.darken-3.hover.no-smooth-scroll(href=`javascript:$('.${post.id}Slider').moveToSlide(${i+2})`) #{item.title}
+                                                    a.weight-800.grey-text.darken-3.hover.no-smooth-scroll(onclick=`$('.${post.id}Slider').moveToSlide(${i+2})`) #{item.title}
                                                     div.row
                                                         p.col.s10.weight-300(style="margin-top: 0;") #{item.excerpt}
-                                                        a.col.s2.btn-flat.no-smooth-scroll.right.btn-inline.blue-text(href=`javascript:$('.${post.id}Slider').moveToSlide(${i+2})` style="padding-right: 0;text-align: right" ) Détails
+                                                        a.col.s2.btn-flat.no-smooth-scroll.right.btn-inline.blue-text(onclick=`$('.${post.id}Slider').moveToSlide(${i+2})` style="padding-right: 0;text-align: right" ) Détails
                                         //- End of Items -->
                                     if r % 2 === 1
                                         div.col.l5.hide-on-med-and-down.animatedBox.animatedBox-right
@@ -75,7 +75,7 @@ div#asso.black-text.scrollspy
                                                             h6.weight-100.text-center #{date.month}
                                                 p
                                             a.btn.no-smooth-scroll(
-                                                href=`javascript:$('.${post.id}Slider').moveToSlide(1)`
+                                                onclick=`$('.${post.id}Slider').moveToSlide(1)`
                                             )
                                                 i.fal.fa-long-arrow-left
                                                 | Retour

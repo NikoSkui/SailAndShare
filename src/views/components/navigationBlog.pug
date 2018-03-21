@@ -3,6 +3,17 @@ ul#dropdownAsso.dropdown-content(style="top: 64px;")
     li: a(href="/#stages" onclick="$('.stagesSlider').moveToSlide(1)") Stages
     li: a(href="/#valeurs" onclick="$('.valeursSlider').moveToSlide(1)") Valeurs
 
+ul#dropdownUser.dropdown-content(style="top: 64px;width:300px;")
+    if user && user.role === 'admin'
+        li: a(href="/admin")
+            i.fa.fa-sign-in
+            |
+            | Admin
+    li: a(href="/users/logout")
+        i.fa.fa-sign-out
+        |
+        | Exit
+
 ul#nav-mobile.sidenav
     li: a(href="/#actu") l'actu
     li: a.dropdown-button(data-target="dropdownAsso" href="#asso") L'association
@@ -18,7 +29,7 @@ div.navbar
 
         div.nav-background(style="opacity: 1;")
             div.pattern.active(
-                style="background-image: url('http://localhost:3008/assets/images/headerSection/landingPage@3x-80.jpg');"
+                style="background-image: url('/assets/images/headerSection/landingPage@3x-80.jpg');"
             )
 
         div.container
@@ -34,6 +45,10 @@ div.navbar
                     li: a(href="/#gallery") Galerie
                     li: a(href="#footer") Nous rejoindre
                     li.active: a(href="/blog") Blog
+                    if user
+                        li: a.dropdown-button(data-target="dropdownUser" href="#"): i.fa.fa-user.teal-text
+                    else
+                        li: a(href="/admin"): i.fa.fa-user
                 //- Include this line below
                 a(class="sidenav-trigger" href="#" data-target="nav-mobile"): i.fa.fa-bars
                 //- End
@@ -48,5 +63,8 @@ div.navbar
             div.categories-container
                 ul.categories.container
                     li: a.active(href="#all") Tout
-                    li: a(href="#sheet") Fiches techniques
-                    li: a(href="#cruise") Croisières
+                    if user
+                        li: a(href="#membre") Réservé aux membres
+                    each category in categories
+                        li: a(href='#' + (category.slug)) #{category.name}
+

@@ -13,14 +13,15 @@ div#actu.scrollspy
                                     //- Item -->
                                     div.row
                                         //- Item -->
-                                        each item in [1,2,3]
+                                        each article in articles
                                             div.col.s10.m6.l4.offset-s1.grid
                                                 figure.effect-bubba
-                                                    img.responsive-img(src=`assets/images/landingPage/actu/${item}/thumb.jpg` alt=`img-${item}`)
+                                                    img.responsive-img(src=`assets/images/blog/landing/${article.picture}` alt=`img-${article.slug}`)
                                                     figcaption
-                                                        h4.weight-300 First <b>title</b>
-                                                        p.grey-text.text-darken-4 Programmer Designer
-                                                        a.no-smooth-scroll(href="javascript:$('.actuSlider').moveToLink(0)") Détails
+                                                        //- h4.weight-300 First <b>#{article.title}</b>
+                                                        h4.weight-300 #{article.title}
+                                                        //- p.grey-text.text-darken-4 Programmer Designer
+                                                        a.no-smooth-scroll(onclick="$('.actuSlider').moveToLink(0)") Détails
                     li.link
                         <div class="container">
                             <div class="row">
@@ -32,7 +33,7 @@ div#actu.scrollspy
                                     <p>
                                         Eternity Films official website: <a href="http://eternity-films.com/" target="_blank">Go to website</a>
                                     </p>
-                                    <a href="javascript:$('.sectionSlider').backToSlide()" class="btn no-smooth-scroll"><i class="mdi-navigation-arrow-back left"></i>Retour</a>
+                                    <a onclick="$('.sectionSlider').backToSlide()" class="btn no-smooth-scroll"><i class="mdi-navigation-arrow-back left"></i>Retour</a>
                                 </div>
                                 <div class="col s12 m9 l9 offset-m1 animatedBox animatedBox-right">
                                     <div class="fadein video-container">
@@ -59,7 +60,7 @@ div#actu.scrollspy
                                         <br>Director: Walter Seward
                                         <br>Producer: Saad Mansoor
                                     </p>
-                                    <a href="javascript:$('.sectionSlider').backToSlide()" class="btn no-smooth-scroll"><i class="mdi-navigation-arrow-back left"></i>Retour</a>
+                                    <a onclick="$('.sectionSlider').backToSlide()" class="btn no-smooth-scroll"><i class="mdi-navigation-arrow-back left"></i>Retour</a>
                                 </div>
                                 <div class="col s12 m9 l9 offset-m1 animatedBox animatedBox-right">
                                     <div class="video-container">
@@ -80,7 +81,7 @@ div#actu.scrollspy
                                     <p>
                                         A restaurant, caf&eacute; and gelateria located in Bogot&aacute;, Colombia.
                                     </p>
-                                    <a href="javascript:$('.sectionSlider').backToSlide()" class="btn no-smooth-scroll"><i class="mdi-navigation-arrow-back left"></i>Retour</a>
+                                    <a onclick="$('.sectionSlider').backToSlide()" class="btn no-smooth-scroll"><i class="mdi-navigation-arrow-back left"></i>Retour</a>
                                 </div>
                                 <div class="col s12 m9 l9 offset-m1 animatedBox animatedBox-right">
                                     <div class="fadein video-container">

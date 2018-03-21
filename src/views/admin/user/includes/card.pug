@@ -1,0 +1,39 @@
+div.item(id=`${user._id}`)
+    div#profile-page-header.card
+        div.card-image.waves-effect.waves-block.waves-light
+            img.activator(src=`/assets/images/users/pictures/${user.picture}` alt="user background")
+
+        figure.card-profile-image(style="top:30px")
+            img.circle.z-depth-2.responsive-img.activator.gradient-45deg-light-blue-cyan.gradient-shadow(src=`/assets/images/users/avatars/${user.avatar}` alt="profile image")
+        div.card-content.pb-0
+            div.row.pt-2.pb-2.mb-0
+                div.col.s12.m11
+                    h4.card-title.grey-text.text-darken-4 #{user.fullname}
+                    p.medium-small.grey-text Membre de l'association
+                div.col.s12.m1.right-align(style="margin-top:-10px")
+                    a.btn-floating.activator.waves-effect.waves-light.rec.accent-2.right
+                        i.material-icons perm_identity
+
+        div.card-reveal
+            p
+                span.card-title.grey-text.text-darken-4 #{user.fullname}
+                    i.material-icons.right close
+
+                span
+                    i.material-icons.cyan-text.text-darken-2 perm_identity
+                    | Membre de l'association
+
+            p I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
+            p
+                i.material-icons.cyan-text.text-darken-2 perm_phone_msg
+                | +1 (612) 222 8989
+            p
+                i.material-icons.cyan-text.text-darken-2 email
+                | #{user.email}
+            p
+                i.material-icons.cyan-text.text-darken-2 cake
+                | 18th June 1990
+
+            form( id=`delete-${user._id}` method="POST" action=`/admin/users/${user._id}`)
+                input(type="hidden" name="_method" value="delete")
+                button.btn-flat.btn-delete-user(form=`delete-${user._id}` style="padding:0;height:1rem;line-height:1rem;"): i.material-icons.red-text.lighten-1(style="font-size:24px;") delete

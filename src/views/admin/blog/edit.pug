@@ -6,13 +6,6 @@ block local
 block append css
     link(href="https://cdn.jsdelivr.net/npm/gijgo@1.8.2/combined/css/gijgo.min.css" rel="stylesheet" type="text/css")
 
-//- block append jsEnd
-//-     script(src="https://cdn.jsdelivr.net/npm/gijgo@1.8.2/combined/js/gijgo.min.js" type="text/javascript")
-//-     script(type="text/javascript").
-//-         $(document).ready(function () {
-//-             $("textarea").editor();
-//-         });
-
 block content
     div.section
         p.caption #{article.title}
@@ -21,6 +14,8 @@ block content
         div.row
             div.col.s12.m12.l12
                 div.card-panel
-                    h4.header2 Edition
+                    h4.header2(style="display:flex;align-items: center;justify-content: space-between;") Edition
+                        span: a.waves-effect.waves-block.waves-light.chat-collapse(href="#" data-activates="chat-out")
+                            i.material-icons settings
                     div.row
                         include ./includes/form.pug
