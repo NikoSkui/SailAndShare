@@ -1,8 +1,10 @@
 [
     {
-        "name": "all"
+        "name": "Fiches techniques",
+        "slug": "fiches-techniques"
     },
     {
-        "name": "cruise"
+        "name": "Croisières",
+        "slug": "croisiere"
     }
 ]

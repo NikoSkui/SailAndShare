@@ -1,0 +1,26 @@
+[
+	{
+		"fullname": "Nouvel utilisateur",
+		"email": "mail",
+		"password": "mail",
+		"avatar": "avatar-1521380068616.png",
+		"picture": "picture-1521380068616.png",
+		"role": "membre"
+	},
+	{
+		"fullname": "Utilisateur Admin",
+		"email": "admin@admin.fr",
+		"password": "$2a$10$H1AIQsG67viZGPRNwUpoC.U3oBXd5ef2EXAQ9E3YA3CR1LEWXzX.G",
+		"avatar": "avatar-1521380068616.png",
+		"picture": "picture-1521380068616.png",
+		"role": "admin"
+	},
+	{
+		"fullname": "Utilisateur Membre",
+		"email": "membre@membre.fr",
+		"password": "$2a$10$p7zzCj1.E0TcvYTFpS9DeewycERri85UQ3fER8niVlMQp2rBwceBy",
+		"avatar": "avatar-1521386100319.png",
+		"picture": "picture-1521386100319.png",
+		"role": "membre"
+	}
+]
