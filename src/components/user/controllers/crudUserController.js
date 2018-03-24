@@ -4,6 +4,7 @@
 const slug    = require('slug'),
       path    = require('path'),
       fs      = require('fs'),
+      jwt     = require('jsonwebtoken'),
       imgProc = require(path.resolve('./src/config/imgProcessor'))  // for manipulate file uploaded
 
 /*
@@ -19,7 +20,8 @@ module.exports = {
 
     // Read all users
     index: (req, res) => {
-        Users.find({}).sort('-_id').exec()
+        Users.find({ _id: { $ne: res.locals.user._id } })
+        .sort('-_id').exec()
         .then(users => {
             res.render('admin/user/index', {users:users})
         })
@@ -40,7 +42,31 @@ module.exports = {
             .then(() => {
                 imgProc.convertAvatarUser(user)
                 .then(() => {
-                    res.json(user)
+                    // tommorow's date
+                    var info = {}
+                    info.user = user
+
+                    jwt.sign(info,process.env.JWT_SECRET,{
+                        expiresIn: process.env.JWT_TIMEOUT_ACTIVATION
+                    }, (err,token) => {
+                        if (err) res.status(500).send(err).end()
+                        console.log("http://localhost:3000/users/verifyEmail/" + token)
+
+                        res.mailer.send('email/register', {
+                            to: info.user.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.
+                            subject: 'Sail And Share | Activation de votre compte', // REQUIRED.
+                            token: token // All additional properties are also passed to the template as local variables.
+                        }, (err) => {
+                            if (err) {
+                              // handle error
+                              res.status(500).send(err).end()
+                              return;
+                            }
+                            // res.redirect('/admin/users');
+                            res.json(user)
+                        });
+                    })
+
                 })
             })
         })
@@ -52,27 +78,12 @@ module.exports = {
     delete: (req,res) => {
         Users.findByIdAndRemove(req.params.id).exec()
         .then((user) => {
-            // fs.unlinkSync(path.resolve('./public/images/users/avatar/' + user.avatar))
-            // fs.unlinkSync(path.resolve('./public/images/users/picture/' + user.picture))
+            fs.unlinkSync(path.resolve('./public/images/users/avatars/' + user.avatar))
+            fs.unlinkSync(path.resolve('./public/images/users/pictures/' + user.picture))
             res.json('l\'utilisateur à bien été supprimé')
         })
         .catch(err => {
             res.status(500).send(err).end()
         })
-    },
-    mail: (req,res) => {
-        res.mailer.send('email/register', {
-            to: 'nicoscui@hotmail.fr', // REQUIRED. This can be a comma delimited string just like a normal email to field.
-            subject: 'Test Email', // REQUIRED.
-            otherProperty: 'Other Property' // All additional properties are also passed to the template as local variables.
-          }, (err) => {
-            if (err) {
-              // handle error
-              console.log(err);
-              res.status(500).send(err).end()
-              return;
-            }
-            res.redirect('/admin/users');
-          });
     }
 }

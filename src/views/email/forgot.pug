@@ -4,14 +4,14 @@ html
     meta(http-equiv = 'Content-Type', content = 'text/html; charset=UTF-8')
     title= subject
     body
-      h1.h1 Bienvenue !
+      h1.h1= subject
       p
-        strong Activation de votre compte:
+        strong Modification de votre mot de passe:
         |
-        | Veuillez cliquer sur le lien suivant pour activer votre compte Sail And Share :
+        | Veuillez cliquer sur le lien suivant pour redéfinir votre mot de passe :
         br
         br
-        <a href="http://localhost:3005/users/verifyEmail/#{token}">activation du compte<a/>
+        <a href="http://localhost:3004/users/password/reset/#{token}">réinitialisez votre mot de passe<a/>
       p
         | Retrouvez nous sur
         |

@@ -15,36 +15,26 @@ block body
 
     div#login-page.row
         div.col.s12.z-depth-4.card-panel
-            form.login-form(method="POST")
+            form.login-form(method="POST" action=`/users/password/reset/${token}`)
                 div.row
                     div.input-field.col.s12.center
                         a(href="/"): img(src="/assets/images/logo@2x.png" alt="" class="circle responsive-img valign profile-image-login")
-                        p.center.login-form-text Se Connecter
-                div.row.margin
-                    div.input-field.col.s12
-                        i(class="material-icons prefix pt-5") email
-                        input(id="email" name="email" type="text")
-                        label(for="email" class="center-align") Email
+                        p.center.login-form-text #{title}
                 div.row.margin
                     div.input-field.col.s12
                         i(class="material-icons prefix pt-5") lock_outline
                         input(id="password" type="password" name="password")
                         label(for="password") Mot de passe
+                    div.input-field.col.s12
+                        i(class="material-icons prefix pt-5") lock_outline
+                        input(id="confirmPswd" type="password" name="confirmPswd")
+                        label(for="confirmPswd") Confirmez votre mot de passe
                     div.col.s12
                         span #{success_msg}
                         span #{error_msg}
                         span #{error}
                         span #{mdp}
 
-                //- div.row
-                //-     div.col.s12.m12.l12.ml-2.mt-3
-                //-         input(type="checkbox" id="remember-me")
-                //-         label(for="remember-me") Se souvenir de moi
                 div.row
                     div.input-field.col.s12
-                        button.btn.waves-effect.waves-light.col.s12 Connection
-                div.row
-                    div.input-field.col.s6.m6.l6
-                        p.margin.medium-small: a(href="mailto:hello@sailandshare.fr") Rejoignez nous!
-                    div.input-field.col.s6.m6.l6
-                        p.margin.right-align.medium-small: a(href="/users/password/forgot") Mot de passe oublié ?
+                        button.btn.waves-effect.waves-light.col.s12 Modifier

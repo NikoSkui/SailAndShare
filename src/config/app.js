@@ -78,8 +78,8 @@ module.exports = (app) => {
         port: 465, // port for secure SMTP
         transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
         auth: {
-          user: '3desquisse@gmail.com',
-          pass: 'NikoSkui5473'
+          user: process.env.MAIL_USER,
+          pass: process.env.MAIL_PSWD
         }
       });
 

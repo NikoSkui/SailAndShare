@@ -8,7 +8,7 @@ const router     = require('express').Router(), // Create new instance Router
       upload     = require(path.resolve('./src/config/uploader')) // for image uploade
 
 /**
- * Blog - admin routes
+ * USER - admin routes
  * Defining the index route by implementing the methods CRUD
  */
 debug('Defined the Admin User routes')
@@ -18,11 +18,9 @@ router.post('/', controller.create)
 router.get('/', controller.index)
 // router.get('/:id', controller.show)
 // // Update - Put méthod.
-// router.post('/:id', upload.single('file'), controller.edit)
+// router.put('/:id', upload.single('file'), controller.edit)
 // // Delete - Delete méthod.
 router.delete('/:id', controller.delete)
-
-router.get('/sendmail', controller.mail)
 
 /**
  * Exports all routes and name them

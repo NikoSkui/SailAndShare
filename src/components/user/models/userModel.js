@@ -9,13 +9,14 @@ mongoose.plugin(slug)
 
 // User Schema
 let userSchema = new mongoose.Schema({
-    fullname: { type: String, required: true},
-    slug:     { type: String, slug:     "fullname" },
-    email:    { type: String, required: true},
-    password: { type: String},
-    avatar:   { type: String},
-    picture:  { type: String},
-    role:     { type: String, default:  "membre"},
+    fullname:    { type: String, required: true},
+    slug:        { type: String, slug:     "fullname" },
+    email:       { type: String, required: true},
+    password:    { type: String},
+    avatar:      { type: String},
+    picture:     { type: String},
+    is_verified: { type: Boolean},
+    role:        { type: String, default:  "membre"},
 },
 {
     timestamps: true
