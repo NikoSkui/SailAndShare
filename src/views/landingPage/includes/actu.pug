@@ -13,7 +13,7 @@ div#actu.scrollspy
                                     //- Item -->
                                     div.row
                                         //- Item -->
-                                        each article in articles
+                                        each article, i in articles
                                             div.col.s10.m6.l4.offset-s1.grid
                                                 figure.effect-bubba
                                                     img.responsive-img(src=`assets/images/blog/landing/${article.picture}` alt=`img-${article.slug}`)
@@ -21,80 +21,26 @@ div#actu.scrollspy
                                                         //- h4.weight-300 First <b>#{article.title}</b>
                                                         h4.weight-300 #{article.title}
                                                         //- p.grey-text.text-darken-4 Programmer Designer
-                                                        a.no-smooth-scroll(onclick="$('.actuSlider').moveToLink(0)") Détails
-                    li.link
-                        <div class="container">
-                            <div class="row">
-                                <div class="col s12 m10 offset-m1 l3 animatedBox animatedBox-left animatedBox-list">
-                                    <h5>Acticle</h5>
-                                    <h6 class="weight-600">Subtitle</h6>
-                                    <h6 class="weight-300">Mars, 2015</h6>
-                                    <hr>
-                                    <p>
-                                        Eternity Films official website: <a href="http://eternity-films.com/" target="_blank">Go to website</a>
-                                    </p>
-                                    <a onclick="$('.sectionSlider').backToSlide()" class="btn no-smooth-scroll"><i class="mdi-navigation-arrow-back left"></i>Retour</a>
-                                </div>
-                                <div class="col s12 m9 l9 offset-m1 animatedBox animatedBox-right">
-                                    <div class="fadein video-container">
-                                        <img src="assets/images/landingPage/actu/1/img-1.jpg" class="responsive-img z-depth-1" />
-                                        <img src="assets/images/landingPage/actu/1/img-2.jpg" class="responsive-img z-depth-1" />
-                                        <img src="assets/images/landingPage/actu/1/img-3.jpg" class="responsive-img z-depth-1" />
-                                        <img src="assets/images/landingPage/actu/1/img-4.jpg" class="responsive-img z-depth-1" />
-                                        <img src="assets/images/landingPage/actu/1/img-5.jpg" class="responsive-img z-depth-1" />
-                                        <img src="assets/images/landingPage/actu/1/img-6.jpg" class="responsive-img z-depth-1" />
-                                        <img src="assets/images/landingPage/actu/1/img-7.jpg" class="responsive-img z-depth-1" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    li.link
-                        <div class="container">
-                            <div class="row">
-                                <div class="col s12 m10 offset-m1 l3 animatedBox animatedBox-left animatedBox-list">
-                                    <h5>Acticle</h5>
-                                    <h6 class="weight-600">Subtitle</h6>
-                                    <h6 class="weight-100">February, 2014</h6>
-                                    <hr>
-                                    <p>
-                                        <br>Director: Walter Seward
-                                        <br>Producer: Saad Mansoor
-                                    </p>
-                                    <a onclick="$('.sectionSlider').backToSlide()" class="btn no-smooth-scroll"><i class="mdi-navigation-arrow-back left"></i>Retour</a>
-                                </div>
-                                <div class="col s12 m9 l9 offset-m1 animatedBox animatedBox-right">
-                                    <div class="video-container">
-                                        iframe(width="665" height="374.0625" src="https://www.youtube.com/embed/T6B3nshw6zc"
-                                        frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen)
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    li.link
-                        <div class="container">
-                            <div class="row">
-                                <div class="col s12 m10 offset-m1 l3 animatedBox animatedBox-left animatedBox-list">
-                                    <h5>Acticle</h5>
-                                    <h6 class="weight-600">Subtitle</h6>
-                                    <h6 class="weight-100">October, 2012</h6>
-                                    <hr>
-                                    <p>
-                                        A restaurant, caf&eacute; and gelateria located in Bogot&aacute;, Colombia.
-                                    </p>
-                                    <a onclick="$('.sectionSlider').backToSlide()" class="btn no-smooth-scroll"><i class="mdi-navigation-arrow-back left"></i>Retour</a>
-                                </div>
-                                <div class="col s12 m9 l9 offset-m1 animatedBox animatedBox-right">
-                                    <div class="fadein video-container">
-                                        <img src="https://c4.staticflickr.com/8/7336/9495686486_c66a2bff1b_c.jpg" class="responsive-img">
-                                        <img src="https://c2.staticflickr.com/8/7450/9495698564_83435c73e0_c.jpg" class="responsive-img">
-                                        <img src="https://c2.staticflickr.com/8/7399/9495700890_37b92bfd2f_c.jpg" class="responsive-img">
-                                        <img src="https://c2.staticflickr.com/8/7399/9495700890_37b92bfd2f_c.jpg" class="responsive-img">
-                                        <img src="https://c1.staticflickr.com/3/2834/9495701688_e37767f444_c.jpg" class="responsive-img">
-                                        <img src="https://c2.staticflickr.com/8/7370/9495687540_63bb938c1f_c.jpg" class="responsive-img">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                                        a.no-smooth-scroll(onclick=`$('.actuSlider').moveToLink(${i})`) Détails
+                    each article, i in articles
+                        li.link
+                            div.container
+                                div.row
+                                    div.col.s12.m10.l5.offset-m1.animatedBox.animatedBox-left.animatedBox-list
+                                        h5 #{article.title}
+                                        h6.weight-300 Extrait
+                                        hr
+                                        p #{article.excerpt}
+                                        p(style="display:flex;justify-content:space-between")
+                                            a.btn.no-smooth-scroll.grey.darken-3(onclick="$('.sectionSlider').backToSlide()")
+                                                i.fa.fa-arrow-left
+                                            a(href=`/blog#!${article.slug}` class="btn no-smooth-scroll")
+                                                i
+                                                | Détails
+                                    div.col.s12.m7.l7.offset-m1.animatedBox.animatedBox-right
+                                        div
+                                            img.responsive-img(src=`assets/images/blog/thumb/${article.picture}` alt=`img-${article.slug}` style="height:300px;width:100%;")
+
             +nextLink('#what')
 // Separator
 div.parallax-container.hide-on-med-and-down

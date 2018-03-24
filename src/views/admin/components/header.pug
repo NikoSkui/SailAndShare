@@ -4,104 +4,17 @@ header#header.page-topbar
     div.navbar-fixed
         nav.navbar-color.gradient-45deg-purple-deep-orange.gradient-shadow
             div.nav-wrapper
-                //- div.header-search-wrapper.hide-on-med-and-down.sideNav-lock
-                //-     i.material-icons search
-                //-     input.header-search-input.z-depth-2(type="text" name="Search" placeholder="Explore Materialize")
                 ul.right.hide-on-med-and-down
-                    //- li
-                    //-     a.waves-effect.waves-block.waves-light.translation-button(href="javascript:void(0)" data-activates="translation-dropdown")
-                    //-         span.flag-icon.flag-icon-gb
                     li
                         a.waves-effect.waves-block.waves-light.toggle-fullscreen(href="javascript:void(0)" data-activates="translation-dropdown")
                             i.material-icons settings_overscan
-                    //- li
-                    //-     a.waves-effect.waves-block.waves-light.notification-button(href="javascript:void(0)" data-activates="notifications-dropdown")
-                    //-         i.material-icons notifications
-                    //-             small.notification-badge 5
                     li
                         a.waves-effect.waves-block.waves-light.profile-button(href="javascript:void(0)" data-activates="profile-dropdown")
                             span.avatar-status.avatar-online
-                                img(src="/assets/images/avatar/avatar-5.png" alt="avatar")
-
-                    //- li
-                    //-     a.waves-effect.waves-block.waves-light.chat-collapse(href="#" data-activates="chat-out")
-                    //-         i.material-icons format_indent_increase
-
-
-                //- // translation-button
-                //- ul#translation-dropdown.dropdown-content
-                //-     li
-                //-         a.grey-text.text-darken-1(href="#!")
-                //-             i.flag-icon.flag-icon-gb
-                //-             | English
-                //-     li
-                //-         a.grey-text.text-darken-1(href="#!")
-                //-             i.flag-icon.flag-icon-fr
-                //-             | French
-                //-     li
-                //-         a.grey-text.text-darken-1(href="#!")
-                //-             i.flag-icon.flag-icon-cn
-                //-             | Chinese
-                //-     li
-                //-         a.grey-text.text-darken-1(href="#!")
-                //-             i.flag-icon.flag-icon-de
-                //-             | German
-
-                //- // notifications-dropdown
-                //- ul#notifications-dropdown.dropdown-content
-                //-     li
-                //-         h6 NOTIFICATIONS
-                //-             span.new.badge 5
-                //-     li.divider
-                //-     li
-                //-         a.grey-text.text-darken-2(href="#!")
-                //-             span.material-icons.icon-bg-circle.cyan.small add_shopping_cart
-                //-             | A new order has been placed!
-                //-         time.media-meta(datetime="2015-06-12T20:50:48+08:00") 2 hours ago
-                //-     li
-                //-         a.grey-text.text-darken-2(href="#!")
-                //-             span.material-icons.icon-bg-circle.red.small stars
-                //-             | Completed the task
-                //-         time.media-meta(datetime="2015-06-12T20:50:48+08:00") 3 day ago
-                //-     li
-                //-         a.grey-text.text-darken-2(href="#!")
-                //-             span.material-icons.icon-bg-circle.teal.small settings
-                //-             | Settings updated
-                //-         time.media-meta(datetime="2015-06-12T20:50:48+08:00") 4 day ago
-                //-     li
-                //-         a.grey-text.text-darken-2(href="#!")
-                //-             span.material-icons.icon-bg-circle.orange.small today
-                //-             | Director meeting started
-                //-         time.media-meta(datetime="2015-06-12T20:50:48+08:00") 6 day ago
-                //-     li
-                //-         a.grey-text.text-darken-2(href="#!")
-                //-             span.material-icons.icon-bg-circle.amber.small trending_up
-                //-             | Generate monthly report
-                //-         time.media-meta(datetime="2015-06-12T20:50:48+08:00") 1 week ago
+                                img(src=`/assets/images/users/avatars/${user.avatar}` alt="avatar")
 
                 // profile-dropdown
                 <ul id="profile-dropdown" class="dropdown-content">
-                    li
-                        a.grey-text.text-darken-1(href="#")
-                            i.material-icons face
-                            | Profile
-
-                    li
-                        a.grey-text.text-darken-1(href="#")
-                            i.material-icons settings
-                            | Settings
-
-                    li
-                        a.grey-text.text-darken-1(href="#")
-                            i.material-icons help
-                            | Help
-
-                    li.divider
-                    li
-                        a.grey-text.text-darken-1(href="#")
-                            i.material-icons lock_outline
-                            | Help
-
                     li
                         a.grey-text.text-darken-1(href="/users/logout")
                             i.material-icons keyboard_tab

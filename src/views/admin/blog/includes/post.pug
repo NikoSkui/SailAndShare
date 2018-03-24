@@ -1,4 +1,4 @@
-div.item.product
+div.item.product(id=`${article._id}`)
     div.card
         div.card-image.waves-effect.waves-block.waves-light
             a.btn.btn-price.blue-grey.darken-3.p-0(href="#" style="display:flex;align-items:center;height:20px;width:auto;justify-content:space-around;")
@@ -17,7 +17,7 @@ div.item.product
             li
                 form( id=`${article._id}` method="POST" action=`/admin/blog/articles/${article._id}`)
                     input(type="hidden" name="_method" value="delete")
-                    button.btn-floating.waves-effect.waves-light.red.accent-2(form=`${article._id}`)
+                    button.btn-floating.waves-effect.waves-light.red.accent-2.btn-delete-article(form=`${article._id}`)
                         i.material-icons delete
         div.card-content
             div.row

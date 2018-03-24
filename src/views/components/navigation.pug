@@ -23,7 +23,7 @@ ul#nav-mobile.sidenav
     if user
         li: a.dropdown-button(data-target="dropdownUser" href="#"): i.fa.fa-user
     else
-        li: a(href="/admin"): i.fa.fa-sign-in
+        li: a(href="/admin"): i.fa.fa-user.teal-text
 
 div.bg-header
 
@@ -44,9 +44,9 @@ div.navbar-fixed
                     li: a(href="#footer") Nous rejoindre
                     li: a(href="/blog") Blog
                     if user
-                        li: a.dropdown-button(data-target="dropdownUser" href="#"): i.fa.fa-user
+                        li: a.dropdown-button(data-target="dropdownUser" href="#"): i.fa.fa-user.teal-text
                     else
-                        li: a(href="/admin"): i.fa.fa-sign-in
+                        li: a(href="/admin"): i.fa.fa-user
                 //- Include this line below
                 a(class="sidenav-trigger" href="#" data-target="nav-mobile"): i.fa.fa-bars
                 //- End

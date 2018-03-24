@@ -6,8 +6,12 @@ block local
     -var currentPage = 'articles'
     -var collapsible = 'active'
 
+append css
+    link(href="/assets/resources/sweetalert/dist/sweetalert.css" type="text/css" rel="stylesheet")
+
 append jsEnd
     // page-item.js - Page Specific JS codes
+    script(typs="text/javascript" src="/assets/resources/sweetalert/dist/sweetalert.min.js")
     script(type="text/javascript" src="/assets/js/adminBlog.js")
 
 block breadcrumbs

@@ -19,9 +19,47 @@ $(function() {
     });
 
     /*
+    * Sweet Alerts - For Articles
+    */
+    // Delete
+    $('.btn-delete-article').click(deleteArticle)
+
+    function deleteArticle(e) {
+        e.preventDefault()
+        let elem        = e.currentTarget,
+            href        = elem.parentElement.getAttribute('action')
+            id          = elem.getAttribute('form').replace('delete-',''),
+            $parentElem = $("#"+id)
+
+
+        swal({
+            title: "Etes vous sûr?",
+            text: "Vous ne pourrez pas revenir en arrière!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Oui, supprime!",
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
+        },() => {
+            // Call to AJAX
+            $.post(href,{ _method: 'DELETE' })
+             .done( data => {
+                $containerBlog.masonry('remove', $parentElem).masonry('layout');
+                swal({
+                    title: "Supprimé!",
+                    text: "L'article à bien été supprimé.",
+                    type: "success",
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+             });
+        });
+    }
+
+    /*
     * Sweet Alerts - For Categories
     */
-
     // Create
     $('.btn-add').click(addCat)
     // Update
@@ -234,7 +272,7 @@ $(function() {
                 $containerBlog.masonry('remove', $parentElem).masonry('layout');
                 swal({
                     title: "Supprimé!",
-                    text: "La catégorie à bien été supprimé.",
+                    text: "L'utilisateur à bien été supprimé.",
                     type: "success",
                     timer: 1500,
                     showConfirmButton: false

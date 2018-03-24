@@ -2,6 +2,8 @@ script(type="text/template" data-template="cardUserTpl")
     div.item
         div#profile-page-header.card
             div.card-image.waves-effect.waves-block.waves-light
+                a.btn.blue-grey.darken-3.p-0(href="#" style="display:flex;align-items:center;height:20px;width:auto;justify-content:space-around;margin: 10px;position: absolute;")
+                        i.material-icons.orange-text.accent-2.small(style="padding:.2rem;") verified_user
                 img.activator(src="/assets/images/users/pictures/${picture}" alt="user background")
 
             figure.card-profile-image(style="top:30px")
@@ -19,18 +21,15 @@ script(type="text/template" data-template="cardUserTpl")
                 p
                     span.card-title.grey-text.text-darken-4 ${fullname}
                         i.material-icons.right close
-
                     span
                         i.material-icons.cyan-text.text-darken-2 perm_identity
                         | Membre de l'association
-
-                p I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-                p
-                    i.material-icons.cyan-text.text-darken-2 perm_phone_msg
-                    | +1 (612) 222 8989
-                p
+                p(style="display:flex;align-items:center;")
                     i.material-icons.cyan-text.text-darken-2 email
                     | ${email}
-                p
-                    i.material-icons.cyan-text.text-darken-2 cake
-                    | 18th June 1990
+
+                //- form( id=`delete-${_id}` method="POST" action=`/admin/users/${_id}`)
+                //-     input(type="hidden" name="_method" value="delete")
+                //-     button.btn-flat.btn-delete-user(form=`delete-${_id}` style="padding:0;height:1rem;line-height:1rem;"): i.material-icons.red-text.lighten-1(style="font-size:24px;") delete
+                //-     span.red-text Supprimer le membre
+
