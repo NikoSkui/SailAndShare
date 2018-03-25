@@ -11,7 +11,6 @@
 /public/dist/
 ###< node/webpack ###
 ###> images/blog & gallery ###
-/public/images/blog/
 /public/images/gallery/
 ###< images/blog & gallery ###
 ###> flag ###

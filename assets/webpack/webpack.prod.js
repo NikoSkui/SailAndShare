@@ -12,7 +12,7 @@ const webpackBase        = require('./webpack.base'),
 
 webpackBase.plugins.push(
   new uglifyJsPlugin({sourceMap: false}),
-  new manifestPlugin(),
+  new manifestPlugin()
 )
 
 module.exports = webpackBase

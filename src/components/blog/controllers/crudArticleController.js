@@ -72,7 +72,7 @@ module.exports = {
             article.categories = req.body.categories
             if (req.file) {
                 imgProc.convertImgBlog(req.file)
-                if(article.picture) {
+                if(article.picture && fs.existsSync(path.resolve('./public/images/blog/thumb/' + article.picture))) {
                     fs.unlinkSync(path.resolve('./public/images/blog/thumb/' + article.picture))
                     fs.unlinkSync(path.resolve('./public/images/blog/big/' + article.picture))
                 }
