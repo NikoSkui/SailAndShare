@@ -1,0 +1,23 @@
+
+header#header.page-topbar
+    // start header nav
+    div.navbar-fixed
+        nav.navbar-color.gradient-45deg-purple-deep-orange.gradient-shadow
+            div.nav-wrapper
+                ul.right.hide-on-med-and-down
+                    li
+                        a.waves-effect.waves-block.waves-light.toggle-fullscreen(href="javascript:void(0)" data-activates="translation-dropdown")
+                            i.material-icons settings_overscan
+                    li
+                        a.waves-effect.waves-block.waves-light.profile-button(href="javascript:void(0)" data-activates="profile-dropdown")
+                            span.avatar-status.avatar-online
+                                img(src=`/assets/images/users/avatars/${user.avatar}` alt="avatar")
+
+                // profile-dropdown
+                <ul id="profile-dropdown" class="dropdown-content">
+                    li
+                        a.grey-text.text-darken-1(href="/users/logout")
+                            i.material-icons keyboard_tab
+                            | Déconnection
+
+// End header

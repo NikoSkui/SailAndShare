@@ -1,0 +1,7 @@
+tr
+    td(id=`${item._id}`) #{item.name}
+    td(style="display:flex;align-items:stretch;")
+        a.btn-update(href="#" data-id=`${item._id}` data-name=`${item.name}` data-href=`/admin/blog/categories/${item._id}` data-slug=`${item.slug}`): i.material-icons mode_edit
+        form( id=`delete-${item._id}` method="POST" action=`/admin/blog/categories/${item._id}`)
+            input(type="hidden" name="_method" value="delete")
+            button.btn-flat.btn-delete(form=`delete-${item._id}` style="padding:0;height:1rem;line-height:1rem;"): i.material-icons.red-text.lighten-1(style="font-size:24px;") delete

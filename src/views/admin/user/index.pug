@@ -1,0 +1,31 @@
+extends ../base.pug
+include ../mixins/breadcrumbs.pug
+
+block local
+    -var currentPage = 'users'
+
+append css
+    link(href="/assets/resources/sweetalert/dist/sweetalert.css" type="text/css" rel="stylesheet")
+
+append jsEnd
+    // page-item.js - Page Specific JS codes
+    script(typs="text/javascript" src="/assets/resources/sweetalert/dist/sweetalert.min.js")
+    script(type="text/javascript" src="/assets/js/adminBlog.js")
+
+block breadcrumbs
+    +breadcrumb(
+        'Gestion des Membres',
+        {'title':'Ajouter un membre','action':'/admin/users'},
+        {'title':'Membres'}
+    )(class='btn-add-user')
+
+block content
+    div.section
+        // start items list
+        div#item-posts.row
+            div.item-sizer
+                each user in users
+                    include ./includes/card.pug
+
+    // Template
+    include ./includes/templates/card.pug

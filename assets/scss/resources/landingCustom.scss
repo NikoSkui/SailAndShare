@@ -1,0 +1,166 @@
+html {
+    font-family: "Lato", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+  .bg-header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    background: black;
+    z-index: -100;
+  }
+
+  .row {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .container .row {
+    margin: 0;
+  }
+
+  .align-top .col {
+    align-self: flex-start;
+  }
+
+  .align-bottom .col {
+    align-self: flex-end;
+  }
+
+  .col {
+    align-self: center;
+    vertical-align: middle;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .btn-inline {
+    margin: 0;
+    line-height: inherit;
+    height: inherit;
+  }
+
+  section {
+    position: relative;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin: 0;
+  }
+
+  .separator {
+    height: 70%;
+  }
+
+  .nextLink {
+    transform: translateY(3rem);
+    text-align: center;
+    height: 2rem;
+  }
+
+  .nextLinkFirst {
+    margin-top: 25%;
+    text-align: center;
+    height: 2rem;
+    opacity: 0.9;
+  }
+
+  .nextLinkFirst > a > i {
+    color: black;
+  }
+
+  .fadein img {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .section-link {
+    margin-top: -100px;
+    padding-top: 100px;
+  }
+
+  .inner-section-link {
+    margin-top: -150px;
+    padding-top: 150px;
+  }
+
+  #splash {
+    margin-top: -58px;
+  }
+
+  @media (min-width: 600px) {
+    .container {
+      width: 550px;
+      font-size: 1em;
+    }
+
+    #splash {
+      margin-top: -64px;
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 900px;
+      font-size: 1em;
+    }
+  }
+  @media (max-width: 992px) {
+    #splash {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: #212121;
+    //   background-image: url("../images/wait.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    #splash img {
+      display: none;
+    }
+
+    #work {
+      margin-top: 40%;
+    }
+  }
+  @media (max-width: 600px) {
+    #work {
+      margin-top: 60%;
+    }
+  }
+
+  .dropdown-content > li > a {
+    font-size: 0.7rem;
+    line-height: 2rem;
+    color: #212121;
+    text-transform: uppercase;
+    font-weight: 800;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row .col {
+    padding-bottom: 10px;
+  }
+
+//SECTION TITLE
+  .title-section {
+    @extend .weight-100, .uppercase,;
+  }

@@ -1,0 +1,50 @@
+
+
+#footer {
+
+    .footer-body {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+
+      .footer-header {
+        @extend .row;
+        .title {
+          @extend .col, .white-text, .text-lighten-1, .weight-100, .uppercase,;
+        }
+      }
+
+      .footer-content {
+        @extend .row;
+        .content-description {
+          @extend .col, .m6, .s10, .offset-s1, .non-fluid, .grey-text, .text-lighten-1, .weight-100,;
+        }
+        .content-brand{
+          @extend .col, .m4, .offset-m2, .s12,;
+          .title {
+            @extend .weight-100, .white-text, .center, .uppercase,;
+            margin:0;
+          }
+          .subtitle {
+            @extend .white-text, .center, .weight-400, .uppercase,;
+            margin:0
+          }
+          .copyright {
+            @extend .col, .s12, .center, .white-text, .weight-100,;
+          }
+        }
+      }
+    }
+
+
+    .footer-copyright {
+      padding-top: 1rem;
+      @extend .weight-300,;
+      line-height: 50px;
+      color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(51, 51, 51, 0.08);
+      .content {
+        @extend .center, .col, .s12,;
+        padding-bottom: 10px !important;
+      }
+    }
+  }

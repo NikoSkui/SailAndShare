@@ -1,0 +1,34 @@
+<aside id="left-sidebar-nav" class="nav-expanded nav-lock nav-collapsible">
+    div.brand-sidebar
+        h1.logo-wrapper
+            a.brand-logo.darken-1(href="/" style="display: flex;align-items: center;")
+                img(src="/assets/images/logoBW.png" alt="sail and share logo" style="height: 32px;width: 28px;")
+                span.logo-text.hide-on-med-and-down Sail & share
+            a.navbar-toggler(href="#")
+                i.material-icons radio_button_checked
+        ul#slide-out.side-nav.fixed.leftside-navigation
+            li.no-padding
+                - var items = { dashboard : {"icon":'dashboard',"title":'Dashboard',"url":'admin'}, blog : {"title":"Blog","icon":'dvr','childs':{articles : {"title":'Articles',"url":'admin/blog/articles'},categories : {"title":'Catégories',"url":'admin/blog/categories'}}}, users : {"icon":'people',"title":'Membres',"url":'admin/users'}}
+                ul.collapsible(data-collapsible="accordion")
+                    for item, path in items
+                        if item.childs
+                            li.bold
+                                a.collapsible-header.waves-effect.waves-cyan(class=collapsible)
+                                    i.material-icons dvr
+                                    span.nav-text #{item.title}
+                                div.collapsible-body
+                                    ul
+                                        each child, childPath in item.childs
+                                            li(class=(childPath == currentPage) && 'active')
+                                                a(href=`/${child.url}`)
+                                                    i.material-icons keyboard_arrow_right
+                                                    span #{child.title}
+                        else
+                            li.bold(class=(path == currentPage) && 'active')
+                                a.waves-effect.waves-cyan(href=`/${item.url}`)
+                                    i.material-icons #{item.icon}
+                                    span.nav-text #{item.title}
+
+    a.sidebar-collapse.btn-floating.btn-medium.waves-effect.waves-light.hide-on-large-only.gradient-45deg-light-blue-cyan.gradient-shadow(href="#" data-activates="slide-out")
+        i.material-icons menu
+</aside>

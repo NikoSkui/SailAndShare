@@ -1,0 +1,21 @@
+extends ../base.pug
+
+block local
+    -var currentPage = 'blog'
+
+block append css
+    link(href="https://cdn.jsdelivr.net/npm/gijgo@1.8.2/combined/css/gijgo.min.css" rel="stylesheet" type="text/css")
+
+block content
+    div.section
+        p.caption #{article.title}
+        div.divider
+        // Form
+        div.row
+            div.col.s12.m12.l12
+                div.card-panel
+                    h4.header2(style="display:flex;align-items: center;justify-content: space-between;") Edition
+                        span: a.waves-effect.waves-block.waves-light.chat-collapse(href="#" data-activates="chat-out")
+                            i.material-icons settings
+                    div.row
+                        include ./includes/form.pug

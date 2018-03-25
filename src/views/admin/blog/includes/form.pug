@@ -1,0 +1,76 @@
+form.col.s12(method="POST" enctype="multipart/form-data")
+    //- input(type="hidden" name="_method" value="put")
+    div.row
+        div.input-field.col.s7
+            input#title(type="text" data-length="70" value=(article.title != "undefined" && article.title) name="title")
+            label(for="title") Titre
+        div.file-field.input-field.col.s5
+            div.btn
+                span Image
+                input(type="file" name="file")
+            div.file-path-wrapper
+                input.file-path.validate(type="text" value=(article.picture != "undefined" && article.picture))
+    div.row
+        div.input-field.col.s12
+            textarea#excerpt.materialize-textarea(name="excerpt" data-length="240") #{article.excerpt}
+            label(for="excerpt") Extrait
+    div.row
+        div.input-field.col.s12
+            textarea#content.materialize-textarea(name="content") #{article.content}
+            label(for="content") Contenu
+    div.row
+        each category, i in categories
+            div.col.s3
+                    input(id=`categories-${i}` type="checkbox" name="categories" value=`${category._id}` checked=(article.categories.indexOf(category._id) != -1) && 'checked')
+                    label(for=`categories-${i}`) #{category.name}
+    input#access(type="hidden" name="access" value=(article.access))
+    input#status(type="hidden" name="status" value=(article.status != "undefined" && "1"))
+    div.row
+        div.input-field.col.s12
+        button.btn.cyan.waves-effect.waves-light.right(type="submit" name="action") Modifier
+            i.material-icons.right send
+
+aside#right-sidebar-nav
+    ul#chat-out.side-nav.rightside-navigation
+        li.li-hover
+            div.row
+                div.col.s12.border-bottom-1.mt-5
+                    ul.tabs
+                        li.tab.col.s12
+                            a.active(href="#settings")
+                                span.material-icons settings
+                div#settings.col.s12
+                    h6.mt-5.mb-3.ml-3.uppercase Réglages avancés
+                    ul.collection.border-none
+                        li.collection-item.border-none
+                            div.m-0
+                                span.font-weight-600 Statut
+                                div.switch.right
+                                    label(style="display:flex;align-items:center")
+                                        i.material-icons.red-text.accent-2 visibility_off
+                                        input#statusParams(type="checkbox" value=(article.status != "undefined" && "1") checked=(article.status != "undefined" && article.status))
+                                        span#leverStatus.lever
+                                        i.material-icons.teal-text.accent-4 visibility
+                            p Définissez si votre article est en ligne ou non.
+                        li.collection-item.border-none
+                            div.m-0
+                                span.font-weight-600 Accès
+                                div.switch.right
+                                    label(style="display:flex;align-items:center")
+                                        i.material-icons lock_open
+                                        input#accessParams(type="checkbox" value=(article.access != "undefined" && "1") checked=(article.access != "0" && article.access))
+                                        span#leverAccess.lever
+                                        i.material-icons.orange-text.accent-2 lock
+                            p Définissez si votre article est visible par tous ou seulement par les adhérents.
+
+script(type="text/javascript").
+    document.getElementById('leverStatus').addEventListener('click', function() {
+        let status = document.getElementById('status')
+        let statusParams = document.getElementById('statusParams')
+        status.setAttribute('value', statusParams.checked?'0':'1')
+    })
+    document.getElementById('leverAccess').addEventListener('click', function() {
+        let access = document.getElementById('access')
+        let accessParams = document.getElementById('accessParams')
+        access.setAttribute('value', accessParams.checked?'0':'1')
+    })

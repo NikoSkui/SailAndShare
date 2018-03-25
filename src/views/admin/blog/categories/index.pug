@@ -1,0 +1,46 @@
+extends ../../base.pug
+include ../../mixins/breadcrumbs.pug
+
+block local
+    -var currentPage = 'categories'
+    -var collapsible = 'active'
+
+append css
+    link(href="/assets/resources/sweetalert/dist/sweetalert.css" type="text/css" rel="stylesheet")
+
+append jsEnd
+    // page-item.js - Page Specific JS codes
+    script(typs="text/javascript" src="/assets/resources/sweetalert/dist/sweetalert.min.js")
+    script(type="text/javascript" src="/assets/js/adminBlog.js")
+
+block breadcrumbs
+    +breadcrumb(
+        'Gestion du blog',
+        {'title':'Ajouter une categorie','action':'/admin/blog/categories'},
+        {'title':'Blog','href':'articles'},
+        {'title':'Categories'}
+    )(class='btn-add')
+
+block content
+    div.section
+        p.caption Gestion des catégories qui permettent de filtrer les différents articles que vous ajouterez au blog.
+        div.divider
+        // responsive table
+        div#responsive-table
+            h4.header Liste des catégories
+            div.row
+                div.col.s12
+                    p Editez ou supprimer une catégorie
+                div.col.s12
+                    // Posts
+                    table.highlight.responsive-table
+                        thead
+                            tr
+                                th Titre
+                                th Actions
+                        tbody
+                            each item in categories
+                                include ../includes/table.pug
+    // Footer
+    include ../includes/tableRow.pug
+        //- end items list

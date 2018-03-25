@@ -1,0 +1,9 @@
+
+div.col.l4.m6.s12.gallery-item.gallery-expand.gallery-filter(class=article.categoriesClass data-dynamic-routing=`${article._id}` data-dynamic-slug=`${article.slug}`)&attributes(article.categories.slug)
+    div.gallery-curve-wrapper
+        a.gallery-cover.gray
+            img.responsive-img(src=`/assets/images/blog/thumb/${article.picture}` alt=`${article.slug}`)
+        div.gallery-header: span !{article.title}
+        div.gallery-body
+        div.gallery-action
+            a.btn-floating.btn-large.waves-effect.waves-light: i.fa.fa-heart

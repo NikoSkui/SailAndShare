@@ -1,0 +1,40 @@
+extends ../admin/base.pug
+
+block local
+    -var currentPage = 'login'; //default
+    -var bodyClass = 'imageBg'
+
+append css
+    style(rel='stylesheet' type='text/css').
+        html, body { height: 100%;}
+        body {display: table;margin: auto;}
+        #login-page {display: table-cell;vertical-align: middle;}
+        .imageBg{background:url('/assets/images/headerSection/landingPage@3x-80.jpg') no-repeat center 100%;background-size:cover;}
+
+block body
+
+    div#login-page.row
+        div.col.s12.z-depth-4.card-panel
+            form.login-form(method="POST" action=`/users/password/reset/${token}`)
+                div.row
+                    div.input-field.col.s12.center
+                        a(href="/"): img(src="/assets/images/logo@2x.png" alt="" class="circle responsive-img valign profile-image-login")
+                        p.center.login-form-text #{title}
+                div.row.margin
+                    div.input-field.col.s12
+                        i(class="material-icons prefix pt-5") lock_outline
+                        input(id="password" type="password" name="password")
+                        label(for="password") Mot de passe
+                    div.input-field.col.s12
+                        i(class="material-icons prefix pt-5") lock_outline
+                        input(id="confirmPswd" type="password" name="confirmPswd")
+                        label(for="confirmPswd") Confirmez votre mot de passe
+                    div.col.s12
+                        span #{success_msg}
+                        span #{error_msg}
+                        span #{error}
+                        span #{mdp}
+
+                div.row
+                    div.input-field.col.s12
+                        button.btn.waves-effect.waves-light.col.s12 Modifier

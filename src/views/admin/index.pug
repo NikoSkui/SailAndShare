@@ -1,0 +1,18 @@
+extends ./base.pug
+
+block content
+    -var posts = [{"icon":"dvr","color":"gradient-45deg-light-blue-cyan","title":"Blog","subtitle":"Articles","number":"4"},{"icon":"perm_identity","color":"gradient-45deg-red-pink","title":"Membre","subtitle":"Actif","number":"2"}]
+
+    div#card-stats
+        div.row
+            each post in posts
+                div.col.s12.m6.l6
+                    div(class=`card gradient-shadow min-height-100 white-text ${post.color}`)
+                        div.padding-4
+                            div.col.s7.m7
+                                i.material-icons.background-round.mt-5 #{post.icon}
+                                p #{post.title}
+                            div.col.s5.m5.right-align
+                                h5.mb-0 #{post.number}
+                                p.no-margin #{post.subtitle}
+                                p #{post.subnumber}

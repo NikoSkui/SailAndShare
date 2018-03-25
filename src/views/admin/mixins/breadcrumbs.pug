@@ -1,0 +1,22 @@
+mixin breadcrumb(title,action,...items)
+    div#breadcrumbs-wrapper
+        // Search for small screen
+        div.header-search-wrapper.grey.lighten-2.hide-on-large-only
+            input.header-search-input.z-depth-2(type="text" name="Search" placeholder="Explore Materialize")
+        div.container
+            div.row
+                div.col.s10.m6.l6
+                    h5.breadcrumbs-title #{title}
+                    ol.breadcrumbs
+                        li: a(href="index.html") Dashboard
+                        each item, i in items
+                            unless (items.length -1) == i
+                                li: a(href=(item.href)) #{item.title}
+                            else
+                                li.active #{item.title}
+
+                div.col.s2.m6.l6
+                    form#add(method="POST" action=`${action.action}`)
+                        button.btn.dropdown-settings.waves-effect.waves-light.breadcrumbs-btn.right.gradient-45deg-light-blue-cyan.gradient-shadow(form="add")&attributes(attributes)
+                            i.material-icons.hide-on-med-and-up add
+                            span.hide-on-small-onl #{action.title}

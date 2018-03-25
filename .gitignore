@@ -9,7 +9,14 @@
 ###> node/webpack ###
 /node_modules/
 /public/dist/
-###< node/webpack###
+###< node/webpack ###
+###> images/blog & gallery ###
+/public/images/blog/
+/public/images/gallery/
+###< images/blog & gallery ###
+###> flag ###
+/public/resources/flag-icon/
+###< flag ###
 
 ### delete after test  ###
 

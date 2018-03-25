@@ -1,0 +1,22 @@
+mixin firstSection(img, title, subtitle, content)
+    //- attributes == {sytle: "height:calc(100vh + 64px)!important;margin-top:-64px;margin-bottom:0;"}
+    div.parallax-container.scrollspy(class!=attributes.class)
+        div.parallax: img(src="/assets/images/headerSection/"+ img)
+        div.container.header-container.hide-on-med-and-down(style="-webkit-transform: translateZ(1px)")
+            div.text-center.text-white.header(style="-webkit-transform: translateZ(1px)")
+                h2: b #{title}
+                h5.weight-300 #{subtitle}
+            div.nextLinkFirst
+                img(src="/assets/images/logo.png")
+                br
+                p.white-text #{content}
+
+        script.
+            $(function () {
+                var touch;
+                if ($('body').width() < 992 || Modernizr.touch) {
+                    touch = true;
+                } else {
+                    touch = false;
+                }
+            });

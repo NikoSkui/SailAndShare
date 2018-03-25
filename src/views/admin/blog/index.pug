@@ -1,0 +1,33 @@
+extends ../base.pug
+
+include ../mixins/breadcrumbs.pug
+
+block local
+    -var currentPage = 'articles'
+    -var collapsible = 'active'
+
+append css
+    link(href="/assets/resources/sweetalert/dist/sweetalert.css" type="text/css" rel="stylesheet")
+
+append jsEnd
+    // page-item.js - Page Specific JS codes
+    script(typs="text/javascript" src="/assets/resources/sweetalert/dist/sweetalert.min.js")
+    script(type="text/javascript" src="/assets/js/adminBlog.js")
+
+block breadcrumbs
+    +breadcrumb(
+        'Gestion du blog',
+        {'title':'Ajouter un article','action':'/admin/blog/articles'},
+        {'title':'Blog','href':'articles'},
+        {'title':'Article'}
+    )
+
+
+block content
+    div.section
+        // start items list
+        div#item-posts.row
+            div.item-sizer
+                each article in articles
+                    include ./includes/post.pug
+        //- end items list

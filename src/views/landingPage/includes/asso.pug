@@ -1,0 +1,104 @@
+-var posts = [{"title":"L'association","id":"association","items":[{"title":" Notre mission","excerpt":"Transmettre un enseignement en voile habitable pour tous niveaux dans un cadre convivial et amical","content":"L'idée est de démocratiser et faciliter l'accès à un voilier de plaisance habitable et d'acquérir de l'autonomie tant en conduite manœuvres qu'en navigation.Par simple contact avec un membre du bureau, un adhérent, directement auprès du chef de bord, pour une après--midi, une journée ou plus. Pour progresser sur des aspects particuliers ou pour découvrir les côtes bretonnes. Le but est de faciliter la transmission des connaissances nautiques liées à la sécurité et à l'ensemble des aspects de la conduite d'un voilier de plaisance."},{"title":"Le support actuel : Un First 27-7 QR (Quille relevable)","excerpt":"Un voilier habitable, de série, à taille humaine","content":"First 27.7. Constructeur : BENETEAU Voilures : Génois Ullman Sails (mai 2015) + Storm Bag (septembre 2015) + Spinnaker (d'origine mais a commencé à servir en 2015 - état neuf) + Grand'Voile Full Batten neuve en cours de réalisation (livraison janvier 2016). Longueur flottaison : 8,30 m Longueur Hors tout : 8,50 m Largeur Hors tout : 3,00 m Tirant d'eau : 2,15 m quille baissée- 0,65 m quille relevée Tirant d'air : 13,54 m"},{"title":"Comment travaillons nous","excerpt":"Une tarification accessible - une cotisation et une indemnisation pour des sorties à la journée","content":"- toute personne peut adhérer sans restriction d'âge, de niveau ou d’origine géographique - 10 € d'adhésion pour pouvoir monter à bord au titre de l'association - 35 € par jour par personne, 10 € pour les mineurs / chômeurs - un accès à des fiches techniques FFV réservés aux adhérents pour travailler sur des thèmes particuliers (Hissage, affalage, empannage sous Spi, conduite au près et au portant, etc...) - un suivi et un accompagnement spécifique pour tout(e) futur(e) moniteur(rice) par un formateur technique fédéral. "},{"title":"Un encadrement qualifié et une sécurité assurée","excerpt":"Un chef de bord officiel, la réglementation respectée","content":"Benjamin LE GROS est le chef de bord attitré de Reder Vras, remplacé en cas d’indisponibilité par des moniteurs chevronnés issus du centre de formation des Glénans. La réglementation en matière de sécurité notamment est naturellement respectée avec lignes de vie, gilet de sauvetage auto-gonflant, feu à retournement notamment, ainsi que des moyens de positionnement variés (GPS traceur  - cartes de la région jusqu'en Irlande - compas de relèvement et sextant)."}]},{"title":"Notre équipe","id":"equipe","items":[{"title":"Benjamin","excerpt":"je suis moniteur de voile filière croisière depuis 2010 au Centre Nautique des Glénans, ayant encadré toutes les saisons 2010-2014 sur les bases de Paimpol, Vannes et Concarneau/Archipel de Glénans.","content":[{"desc":"Discovered my second passion, which is Web Development and since then, I've learned lots of different languages and techniques.", "year":"2005", "month":"JANUARY"},{"desc":"Got my first manual camera and since then I've been practicing photography.", "year":"2008", "month":"DECEMBER"},{"desc":"Started studying professional photography in Bogotá.", "year":"2012", "month":"JANUARY"}]},{"title":"David","excerpt":"je suis amateur de voyages et d\'expériences humaines fortes. j\'ai effectué de nombreux stages avec le Centre Nautique des Glénans en métropole et aux Antilles.","content":[{"desc":"Discovered my second passion, which is Web Development and since then, I've learned lots of different languages and techniques.", "year":"2005", "month":"JANUARY"},{"desc":"Got my first manual camera and since then I've been practicing photography.", "year":"2008", "month":"DECEMBER"},{"desc":"Started studying professional photography in Bogotá.", "year":"2012", "month":"JANUARY"}]},{"title":"Sam","excerpt":"je suis salarié dans le milieu associatif. J'aime l'aspect relationnel fort qu'amène la croisière sur un voilier de plaisance. Passionné par la dynamique de groupe, le rôle de secrétaire trésorier me permet d'amariner ma culture associative et de rencontrer beaucoup de gens très différents.","content":[{"desc":"Discovered my second passion, which is Web Development and since then, I've learned lots of different languages and techniques.", "year":"2005", "month":"JANUARY"},{"desc":"Got my first manual camera and since then I've been practicing photography.", "year":"2008", "month":"DECEMBER"},{"desc":"Started studying professional photography in Bogotá.", "year":"2012", "month":"JANUARY"}]}]},{"title":"Nos stages","id":"stages","items":[{"title":"Croisière côtière d’initiation","excerpt":"Pour un après-midi ou une journée, en famille ou entre amis","content":"Sortie en mer ludique, en mode 'passagers' ou en mode 'stagiaire' avec apprentissage des rudiments de Voile"},{"title":"Croisière côtière d’agrément","excerpt":"Pour une demi-journée, une journée ou un week-end - découverte","content":"Modalités pratiques : 10 € d'adhésion annuelle et 35 € par jour (hors caisse de bord) par personne Tarification spéciale pour les mineurs."},{"title":"Croisière à thème","excerpt":"Thème conduite-manœuvre ou navigation","content":"Possibilité de partir en croisière pour développer des compétences spécifiques en conduite manœuvre, au spinnaker ou en navigation autour d'un bassin de navigation appropriée (Baie de Bénodet - Concarneau pour la manœuvre ; Audierne, Sein, Ouessant pour la navigation par exemple)."},{"title":"Croisière hauturière","excerpt":"Traversée de la Manche ou Traversée du Golfe de Gascogne","content":"Réservées aux équipiers confirmés - Tarification variable selon la saison et le temps de navigation."}]},{"title":"Nos valeurs","id":"valeurs","items":[{"title":"Partage humilité respect","excerpt":"Les croisières ont pour but de partager une passion et transmettre des connaissances dans un cadre amical et convivial","content":"- respect de la réglementation maritime et notamment de la division 240 réformée en mai 215 - respect de l'environnement et limitation de l'empreinte écologique - sensibilisation à l'écologie et monde marin - respect de chacun - aucune contrainte de niveau requis ni aucune limitation d'aucune sorte - responsabilisation des équipiers"}]}]
+
+// Section #asso
+div#asso.black-text.scrollspy
+
+    nav.about-tabs.tabs-wrapper.hide-on-med-and-down(data-target="asso")
+        div.row.white
+            div.container
+                ul.sticky-tabs.tabs
+                    each post, i in posts
+                        li(class=`tab col s${12/posts.length}`)
+                            a(href=`#${post.id}` onclick=`$('.${post.id}Slider').moveToSlide(1))`) #{post.title}
+
+    each post, r in posts
+        // #{post.id} Section
+        div(id=`${post.id}`).white.scrollspy
+            section
+                div(class=`sectionSlider ${post.id}Slider`)
+                    ul
+                        li
+                            div.container
+                                div.row
+                                    if r % 2 === 0
+                                        div.col.s8.m6.l5.offset-m3.offset-s2.animatedBox.animatedBox-left
+                                            img.circle.responsive-img(
+                                                src=`assets/images/landingPage/asso/${post.id}/une.jpg`
+                                            )
+                                    else
+                                        div.col.s8.m6.l5.offset-m3.offset-s2.hide-on-large-only
+                                            img.circle.responsive-img(
+                                                src=`assets/images/landingPage/asso/${post.id}/une.jpg`
+                                            )
+                                    div.col.l7.m12.s8.offset-s2.animatedBox.animatedBox-left.animatedBox-list
+                                        h2.title-section #{post.title}
+                                        //- Items -->
+                                        each item, i in post.items
+                                            div.row
+                                                div.col.s12
+                                                    a.weight-800.grey-text.darken-3.hover.no-smooth-scroll(onclick=`$('.${post.id}Slider').moveToSlide(${i+2})`) #{item.title}
+                                                    div.row
+                                                        p.col.s10.weight-300(style="margin-top: 0;") #{item.excerpt}
+                                                        a.col.s2.btn-flat.no-smooth-scroll.right.btn-inline.blue-text(onclick=`$('.${post.id}Slider').moveToSlide(${i+2})` style="padding-right: 0;text-align: right" ) Détails
+                                        //- End of Items -->
+                                    if r % 2 === 1
+                                        div.col.l5.hide-on-med-and-down.animatedBox.animatedBox-right
+                                            img.circle.responsive-img(
+                                                src=`assets/images/landingPage/asso/${post.id}/une.jpg`
+                                            )
+                                //- End row -->
+                            //- End container -->
+                        //- End li -->
+                        each item, i in post.items
+                            li
+                                div.container
+                                    div.row
+                                        div.col.s8.m6.offset-m3.offset-s2.hide-on-large-only
+                                            img.circle.responsive-img(
+                                                src=`assets/images/landingPage/asso/${post.id}/detail-${i+1}.jpg`
+                                            )
+                                        div.col.l6.m12.s8.offset-s2.offset-l1.animatedBox.animatedBox-left.animatedBox-list
+                                            if post.id !== "equipe"
+                                                h4 #{item.title}
+                                                //- Item -->
+                                                p.grey-text.darken-2 #{item.content}
+                                            else
+                                                p.non-fluid
+                                                each date in item.content
+                                                    div.row(style="display:flex;margin-top:1rem;")
+                                                        div.col.s8.m9(style="align-self:flex-start;")
+                                                            p.grey-text.darken-2(style="margin-top:0;")
+                                                                | #{date.desc}
+                                                        div.col.s4.m3(style="align-self:flex-start;")
+                                                            h4.weight-100.text-center(style="margin-top:0;")
+                                                                | #{date.year}
+                                                            h6.weight-100.text-center #{date.month}
+                                                p
+                                            a.btn.no-smooth-scroll(
+                                                onclick=`$('.${post.id}Slider').moveToSlide(1)`
+                                            )
+                                                i.fal.fa-long-arrow-left
+                                                | Retour
+                                            //- End of Item -->
+                                        div.col.l5.hide-on-med-and-down.animatedBox.animatedBox-right
+                                            img.circle.responsive-img(
+                                                src=`assets/images/landingPage/asso/${post.id}/detail-${i+1}.jpg`
+                                            )
+                                    //- End row -->
+                                //- End container -->
+                            //- End li -->
+                    //- End ul -->
+                if posts[r+1]
+                    +nextLink(`#${posts[r+1].id}`)
+                else
+                    +nextLink('#gallery')
+            //- End of Section -->
+        // End of #{post.id} Section
+        if posts[r+1]
+            // Separator
+            div.parallax-container
+                div.parallax: img(src=`assets/images/landingPage/separator/${post.id}.jpg`)
+unless posts[r+1]
+// Separator
+div.parallax-container.endSeparator
+    div.parallax: img(src=`assets/images/landingPage/separator/valeurs.jpg`)

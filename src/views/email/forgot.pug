@@ -1,0 +1,18 @@
+doctype transitional
+html
+  head
+    meta(http-equiv = 'Content-Type', content = 'text/html; charset=UTF-8')
+    title= subject
+    body
+      h1.h1= subject
+      p
+        strong Modification de votre mot de passe:
+        |
+        | Veuillez cliquer sur le lien suivant pour redéfinir votre mot de passe :
+        br
+        br
+        <a href="http://localhost:3004/users/password/reset/#{token}">réinitialisez votre mot de passe<a/>
+      p
+        | Retrouvez nous sur
+        |
+        <a href="http://sailandshare.fr">sailandshare.fr<a/>
