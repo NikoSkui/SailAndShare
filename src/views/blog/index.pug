@@ -1,13 +1,20 @@
 extends ../base.pug
 
+append title
+    if user
+        |
+        | | Blog - membre
+    else
+        |
+        | | Blog
+
 block css
     link(rel="stylesheet" href="/assets/css/blog.css")
 
-
 block jsStart
     script(src="/assets/resources/js/_bower.js")
-    script(src="assets/resources/js/_functions.js")
-    script(src="assets/resources/js/scripts.js")
+    //- script(src="assets/resources/js/_functions.js")
+    //- script(src="assets/resources/js/scripts.js")
 
 block jsEnd
     script(src="/assets/resources/js/color-thief.js")
@@ -16,7 +23,7 @@ block jsEnd
 block body
 
     //- initial header -->
-    include ../components/wait.pug
+    //- include ../components/wait.pug
 
     // Document Start
 

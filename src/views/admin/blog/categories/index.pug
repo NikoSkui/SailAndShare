@@ -1,6 +1,10 @@
 extends ../../base.pug
 include ../../mixins/breadcrumbs.pug
 
+append title
+        |
+        | | Gestion du blog - catégories
+
 block local
     -var currentPage = 'categories'
     -var collapsible = 'active'
