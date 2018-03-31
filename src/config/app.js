@@ -72,8 +72,8 @@ module.exports = (app) => {
      * Use 'express-mailer' middleware to send mail
      */
     mailer.extend(app, {
-        from: 'no-reply@example.com',
-        host: 'smtp.gmail.com', // hostname
+        from: 'notifications@sailandshare.fr',
+        host: 'mail.gandi.net', // hostname
         secureConnection: true, // use SSL
         port: 465, // port for secure SMTP
         transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
