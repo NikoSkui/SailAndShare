@@ -78,9 +78,12 @@ module.exports = {
     delete: (req,res) => {
         Users.findByIdAndRemove(req.params.id).exec()
         .then((user) => {
-            fs.unlinkSync(path.resolve('./public/images/users/avatars/' + user.avatar))
-            fs.unlinkSync(path.resolve('./public/images/users/pictures/' + user.picture))
-            res.json('l\'utilisateur à bien été supprimé')
+            let basePath = './public/images/users/avatars/'
+            if (fs.existsSync(path.resolve(basePath + user.avatar))) {
+                fs.unlinkSync(path.resolve(basePath + user.avatar))
+                fs.unlinkSync(path.resolve('./public/images/users/pictures/' + user.picture))
+                res.json('l\'utilisateur à bien été supprimé')
+            }
         })
         .catch(err => {
             res.status(500).send(err).end()
