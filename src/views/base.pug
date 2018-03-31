@@ -3,7 +3,9 @@ html
     head
         // Basic Page Needs
         meta(charset="utf-8")
-        title Sail and Share
+        title
+            block title
+                | Sail and Share
         meta(name="description" content="Association pour le partage de la voile")
         meta(name="author" content="studioNS")
         // Mobile Specific Metas
@@ -13,10 +15,28 @@ html
         type='text/css')
         // ICONS
         script(src='/assets/fonts/icons.js')
+        // FAVICONS
+        link(rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png")
+        link(rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png")
+        link(rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png")
+        link(rel="manifest" href="/assets/images/favicons/site.webmanifest")
+        link(rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#5bbad5")
+        link(rel="shortcut icon" href="/assets/images/favicons/favicon.ico")
+        meta(name="msapplication-TileColor" content="#da532c")
+        meta(name="msapplication-config" content="/assets/images/favicons/browserconfig.xml")
+        meta(name="theme-color" content="#ffffff")
         // CSS
         block css
         // JS
         block jsStart
+        //- // GOOGLE ANALYTIC
+        //- script(async src="https://www.googletagmanager.com/gtag/js?id=UA-116664400-1")
+        //- script.
+        //-     window.dataLayer = window.dataLayer || [];
+        //-     function gtag(){dataLayer.push(arguments);}
+        //-     gtag('js', new Date());
+
+        //-     gtag('config', 'UA-116664400-1');
     body
         block body
         block jsEnd
