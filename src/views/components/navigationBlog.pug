@@ -32,31 +32,31 @@ div.navbar
                 style="background-image: url('/assets/images/headerSection/landingPage@3x-80.jpg');"
             )
 
-        div.container
-            div.nav-wrapper
-                a(class="brand-logo text-logo uppercase" href="/")
-                    | Sail
-                    b and
-                    | Share
-                a(class="brand-logo icon-logo" href="/"): img(src="/assets/images/logo.png")
-                ul#nav-desktop.right.hide-on-med-and-down
-                    li: a(href="/#actu") l'actu
-                    li: a.dropdown-button(data-target="dropdownAsso" href="#asso") L'association
-                    li: a(href="/#gallery") Galerie
-                    li: a(href="#footer") Nous rejoindre
-                    li.active: a(href="/blog") Blog
-                    if user
-                        li: a.dropdown-button(data-target="dropdownUser" href="#"): i.fa.fa-user.teal-text
-                    else
-                        li: a(href="/admin"): i.fa.fa-user
-                //- Include this line below
-                a(class="sidenav-trigger" href="#" data-target="nav-mobile"): i.fa.fa-bars
-                //- End
+        //- div.container
+        div.nav-wrapper.container
+            a(class="brand-logo text-logo uppercase" href="/")
+                | Sail
+                b and
+                | Share
+            a(class="brand-logo icon-logo" href="/"): img(src="/assets/images/logo.png")
+            ul#nav-desktop.right.hide-on-med-and-down
+                li: a(href="/#actu") l'actu
+                li: a.dropdown-button(data-target="dropdownAsso" href="#asso") L'association
+                li: a(href="/#gallery") Galerie
+                li: a(href="#footer") Nous rejoindre
+                li.active: a(href="/blog") Blog
+                if user
+                    li: a.dropdown-button(data-target="dropdownUser" href="#"): i.fa.fa-user.teal-text
+                else
+                    li: a(href="/admin"): i.fa.fa-user
+            //- Include this line below
+            a(class="sidenav-trigger" href="#" data-target="nav-mobile"): i.fa.fa-bars
+            //- End
 
-            div.nav-header.center
-                h1: b Blog
-                //- div.tagline My life
-                h5.weight-300(style="margin-bottom:60px;") La vie de l'association
+        div.nav-header.center
+            h1: b Blog
+            //- div.tagline My life
+            h5.weight-300(style="margin-bottom:60px;") La vie de l'association
 
         // Fixed Masonry Filters
         div.categories-wrapper.grey.darken-3

@@ -8,7 +8,6 @@
 
 (function ($) {
 
-
     var methods = {
 
       init : function(options) {
@@ -359,6 +358,9 @@
             if ($('nav').length) {
               originalNavColor = "rgb(66, 66, 66)";
               $('nav').addClass('fadeOut');
+              // setTimeout(() => {
+              //   $('.categories-container').removeClass('pin-top');
+              // }, 1);
             }
             navbar.css({'background-color': originalNavColor});
             navbar.css({'z-index': 999});
